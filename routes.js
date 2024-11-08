@@ -25,8 +25,10 @@ let data = {
         {
             id: 1,
             name: "Juan Peterson",
-            status: 1,
-            registeredHours: [],
+            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
+            registeredHours: [], // Registro de horas trabajadas
+            startTime: null, // Hora de inicio de trabajo
+            breakStart: null,
             email: "juan.peterson@example.com",
             phone: "987654321",
             area: "Desarrollo",
@@ -48,8 +50,10 @@ let data = {
         {
             id: 2,
             name: "Sam Perez",
-            status: 1,
-            registeredHours: [],
+            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
+            registeredHours: [], // Registro de horas trabajadas
+            startTime: null, // Hora de inicio de trabajo
+            breakStart: null,
             email: "sam.perez@example.com",
             phone: "912345678",
             area: "Marketing",
@@ -71,8 +75,10 @@ let data = {
         {
             id: 3,
             name: "Celeste Jr",
-            status: 1,
-            registeredHours: [],
+            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
+            registeredHours: [], // Registro de horas trabajadas
+            startTime: null, // Hora de inicio de trabajo
+            breakStart: null,
             email: "celeste.jr@example.com",
             phone: "989898989",
             area: "Soporte Técnico",
@@ -94,8 +100,10 @@ let data = {
         {
             id: 4,
             name: "Sammy el Heladero",
-            status: 1,
-            registeredHours: [],
+            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
+            registeredHours: [], // Registro de horas trabajadas
+            startTime: null, // Hora de inicio de trabajo
+            breakStart: null,
             email: "sammy.heladero@example.com",
             phone: "977777777",
             area: "Ventas",
@@ -117,8 +125,10 @@ let data = {
         {
             id: 5,
             name: "Peter Parker",
-            status: 1,
-            registeredHours: [],
+            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
+            registeredHours: [], // Registro de horas trabajadas
+            startTime: null, // Hora de inicio de trabajo
+            breakStart: null,
             email: "peter.parker@example.com",
             phone: "911111111",
             area: "Fotografía",
@@ -138,7 +148,7 @@ let data = {
             }
         }
     ],
-    statuses: [
+    status: [
         {
             id: 1,
             name: "Dentro",
@@ -165,24 +175,24 @@ let data = {
         {
             id: 1,
             date: '2023-10-29',
-            inicio: '08:00:00',
-            fin: '17:00:00',
-            Workers_id: 1,
-            status_id: 1,
-            longitud: -76.991,
-            latitud: -12.046,
-            status_time: '08:00:00'
+            start: '08:00:00',
+            end: '17:00:00',
+            workerId: 1,
+            statusId: 1,
+            longitude: -76.991,
+            latitude: -12.046,
+            statusTime: '08:00:00'
         },
         {
             id: 2,
             date: '2023-10-29',
-            inicio: '09:00:00',
-            fin: '18:00:00',
-            Workers_id: 2,
-            status_id: 2,
-            longitud: -76.991,
-            latitud: -12.046,
-            status_time: '09:00:00'
+            start: '09:00:00',
+            end: '18:00:00',
+            workerId: 2,
+            statusId: 2,
+            longitude: -76.991,
+            latitude: -12.046,
+            statusTime: '09:00:00'
         }
     ]
 }
@@ -197,7 +207,7 @@ let data = {
  */
 function onInit(startYear, endYear, startMont, endMonth, startDay, endDay, weekdays) {
     for (let index in data.workers) {
-        data.workers[index].status = data.statuses[Math.floor(Math.random() * data.statuses.length)].id;
+        data.workers[index].status = data.status[Math.floor(Math.random() * data.status.length)].id;
         for (let year = startYear; year <= endYear; year++) {
             let stMonth = year === startYear ? startMont - 1 : 0;
             let edMonth = year === endYear ? endMonth - 1 : 11;
@@ -473,18 +483,18 @@ router.get("/workers/:statusId", (req, res)=>{
     if(!statusId || isNaN(statusId)){
         res.status(HttpStatusCode.BadRequest).json({
             message:"No ha ingresado un id de estado valido",
-            valid: data.statuses
+            valid: data.status
         })
         return;
     }
 
     statusId = Number(statusId)
 
-    let statusIndex = data.statuses.findIndex(status=> status.id === statusId) + 1
+    let statusIndex = data.status.findIndex(status=> status.id === statusId) + 1
     if(!statusIndex){
         res.status(HttpStatusCode.BadRequest).json({
             message:"El id de estado solicitado no existe en la lista de estados",
-            valid: data.statuses
+            valid: data.status
         })
         return;
     }
@@ -663,43 +673,41 @@ module.exports = router;
  *                   type: string
  *                   example: "No existe un trabajador con el ID 25"
  */
-router.put("/worker/:id/status/:status", (req, res)=>{
-    let workerId = req.params.id; // Obtener el ID del trabajador de los parámetros de la URL
-    let status = req.params.status;
-    console.log(`Se solicito actualizar el estado del trabajador con ID ${workerId} a ${status}`, workerId)
+router.put("/worker/:id/status/:status", (req, res) => {
+    let workerId = parseInt(req.params.id); // Convertir a número
+    let status = parseInt(req.params.status);
 
-    if(!workerId || isNaN(workerId)){
-        res.status(HttpStatusCode.BadRequest).json({
-            message:"El parametro ID del trabajador no fue proporcionado, o no tiene un formato correcto"
-        })
-        return;
+    console.log(`Se solicitó actualizar el estado del trabajador con ID ${workerId} a ${status}`);
+
+    // Verificar si el workerId es válido
+    if (isNaN(workerId)) {
+        return res.status(HttpStatusCode.BadRequest).json({
+            message: "El parámetro ID del trabajador no fue proporcionado, o no tiene un formato correcto"
+        });
     }
 
-    if(!status in data.statuses){
-        res.status(HttpStatusCode.BadRequest).json({
-            message:"El estado solicitado no existe en la lista de estados posibles",
-            valid: data.statuses
-        })
-        return;
+    // Verificar si el status es válido
+    if (!data.status.some(s => s.id === status)) {
+        return res.status(HttpStatusCode.BadRequest).json({
+            message: "El estado solicitado no existe en la lista de estados posibles",
+            valid: data.status
+        });
     }
-
-    workerId = Number(workerId)
 
     // Buscar el trabajador en los datos
-    let workerIndex = data.workers.findIndex(worker => worker.id === workerId);
+    const workerIndex = data.workers.findIndex(worker => worker.id === workerId);
 
     // Si no se encuentra al trabajador, enviar un error 404
-    if(!workerIndex){
-        res.status(HttpStatusCode.NotFound).json({
+    if (workerIndex === -1) {
+        return res.status(HttpStatusCode.NotFound).json({
             message: `No existe un trabajador con el ID ${workerId}`
         });
-        return;
     }
 
-    //Reemplazar el estado del trabajador
+    // Reemplazar el estado del trabajador
     data.workers[workerIndex].status = status;
-    res.status(HttpStatusCode.Ok).json(data.workers[workerIndex]);
-})
+    return res.status(HttpStatusCode.Ok).json(data.workers[workerIndex]);
+});
 
 
 
@@ -722,7 +730,7 @@ router.put("/worker/:id/status/:status", (req, res)=>{
  *                 example: "Dentro"
  */
 router.get("/statuses", (req, res) => {
-    res.status(HttpStatusCode.Ok).json(data.statuses);
+    res.status(HttpStatusCode.Ok).json(data.status);
 });
 /**
  * @swagger
@@ -790,13 +798,13 @@ router.put("/statuses/:index", (req, res) => {
         });
     }
 
-    if (index < 0 || index >= data.statuses.length) {
+    if (index < 0 || index >= data.status.length) {
         return res.status(HttpStatusCode.NotFound).json({
             message: "El indice del estado esta fuera de rango"
         });
     }
-    let previousStatus = data.statuses[index]
-    data.statuses[index] = newStatus;
+    let previousStatus = data.status[index]
+    data.status[index] = newStatus;
     res.status(HttpStatusCode.Ok).json({
         message: `Estado "${previousStatus}" actualizado a "${newStatus}".`
     });
@@ -859,23 +867,23 @@ router.post("/statuses", (req, res) => {
         });
     }
 
-    if (data.statuses.includes(newStatus)) {
+    if (data.status.includes(newStatus)) {
         return res.status(HttpStatusCode.Conflict).json({
             message: "El estado ya existe."
         });
     }
 
-    data.statuses.push(newStatus);
+    data.status.push(newStatus);
     res.status(HttpStatusCode.Created).json({
         message: `Estado "${newStatus}" creado con éxito.`
     });
 });
 
 router.post("/data", (req, res) => {
-    const { name, email, phone, area, institution } = req.body;
+    const { name, startTime, breakStart, email, phone, area, sede, institution, password, } = req.body;
 
     // Validar que todos los campos están presentes
-    if (!name || !email || !phone || !area || !institution) {
+    if (!name || !email || !phone || !area || !institution || !password  || !startTime || !breakStart || !sede) {
         return res.status(HttpStatusCode.BadRequest).json({
             message: "Todos los campos son obligatorios"
         });
@@ -889,8 +897,15 @@ router.post("/data", (req, res) => {
         phone,
         area,
         institution,
+        sede,
+        password,
+        startTime:0,
+        breakStart:0,
+        longitude: 0,
+        latitude:0,
         status: 1, // Estado por defecto (Dentro)
         registeredHours: [] // Iniciar con horas registradas vacías
+        //todo como hacemos con el horariooooo, aqui tenemos que pasar el schedule: { thu: start break end}
     };
 
     // Añadir el nuevo trabajador a la lista de trabajadores
@@ -1049,6 +1064,87 @@ router.put('/worker/:id/schedule', (req, res) => {
 });
 
 
+// Endpoint para iniciar el tiempo de trabajo de un trabajador
+router.post("/worker/:id/start", (req, res) => {
+    const workerId = parseInt(req.params.id);
+    const worker = data.workers.find(w => w.id === workerId);
+
+    if (!worker) {
+        return res.status(404).json({ message: "Trabajador no encontrado." });
+    }
+
+    // Cambiar el estado del trabajador a "Dentro" y registrar la hora de inicio
+    worker.status = 1; // Estado "Dentro"
+    worker.startTime = new Date(); // Hora de inicio
+
+    res.status(200).json({
+        message: "Tiempo de trabajo iniciado.",
+        startTime: worker.startTime
+    });
+});
+
+// Endpoint para detener el tiempo de trabajo de un trabajador
+router.post("/worker/:id/stop", (req, res) => {
+    const workerId = parseInt(req.params.id);
+    const worker = data.workers.find(w => w.id === workerId);
+
+    if (!worker) {
+        return res.status(404).json({ message: "Trabajador no encontrado." });
+    }
+
+    if (!worker.startTime) {
+        return res.status(400).json({ message: "El trabajador no ha iniciado un turno." });
+    }
+
+    // Calcular la duración del tiempo de trabajo
+    const endTime = new Date();
+    const duration = (endTime - new Date(worker.startTime)) / 1000 / 60; // Duración en minutos
+    worker.startTime = null;
+
+    // Registrar la hora trabajada en `registeredHours`
+    worker.registeredHours.push({
+        date: endTime.toISOString().split('T')[0],
+        start: worker.startTime,
+        end: endTime,
+        duration
+    });
+
+    worker.status = 2; // Cambiar estado a "Fuera"
+
+    res.status(200).json({
+        message: "Tiempo de trabajo detenido.",
+        duration
+    });
+});
+
+// Endpoint para cambiar el estado del trabajador a "Descanso"
+router.post("/worker/:id/break", (req, res) => {
+    const workerId = parseInt(req.params.id);
+    const worker = data.workers.find(w => w.id === workerId);
+
+    if (!worker) {
+        return res.status(404).json({ message: "Trabajador no encontrado." });
+    }
+
+    worker.status = 3; // Estado "Descanso"
+    worker.breakStart = new Date();
+
+    res.status(200).json({
+        message: "El trabajador está en descanso.",
+        breakStart: worker.breakStart
+    });
+});
+
+// Endpoint para obtener el resumen de trabajadores por estado
+router.get("/workers/status-summary", (req, res) => {
+    const summary = {
+        Dentro: data.workers.filter(w => w.status === 1).length,
+        Fuera: data.workers.filter(w => w.status === 2).length,
+        Descanso: data.workers.filter(w => w.status === 3).length
+    };
+
+    res.status(200).json(summary);
+});
 
 
 
