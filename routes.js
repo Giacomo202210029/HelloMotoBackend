@@ -31,7 +31,7 @@ let data = {
             breakStart: null,
             email: "juan.peterson@example.com",
             phone: "987654321",
-            area: "Desarrollo",
+            area: 1,
             sede: "Casa de Señor Julio",
             institution: "SENATI",
             password: "Juan Peterson",
@@ -56,7 +56,7 @@ let data = {
             breakStart: null,
             email: "sam.perez@example.com",
             phone: "912345678",
-            area: "Marketing",
+            area: 2,
             sede: "Casa de Señor Julio",
             institution: "SENATI",
             password: "Sam Perez",
@@ -81,7 +81,7 @@ let data = {
             breakStart: null,
             email: "celeste.jr@example.com",
             phone: "989898989",
-            area: "Soporte Técnico",
+            area: 3,
             sede: "Casa de Señor Julio",
             institution: "SENATI",
             password: "Celeste Jr",
@@ -106,7 +106,7 @@ let data = {
             breakStart: null,
             email: "sammy.heladero@example.com",
             phone: "977777777",
-            area: "Ventas",
+            area: 5,
             sede: "Miraflores",
             institution: "SENATI",
             password: "Sammy el Heladero",
@@ -131,7 +131,7 @@ let data = {
             breakStart: null,
             email: "peter.parker@example.com",
             phone: "911111111",
-            area: "Fotografía",
+            area: 4,
             sede: "Casa de Señor Julio",
             institution: "SENATI",
             password: "Peter Parker",
@@ -147,6 +147,72 @@ let data = {
                 sun: { start: 'Libre', end: '', mode: '' }
             }
         }
+    ],
+    areas:[
+        {
+            id: 1,
+            name: "Android",
+            schedule: {
+                mon: { start: '5:00am', end: '3:00pm', mode: 'Virtual' },
+                tue: { start: '5:00am', end: '3:00pm', mode: 'Presencial' },
+                wed: { start: '5:00am', end: '3:00pm', mode: 'Virtual' },
+                thu: { start: '5:00am', end: '3:00pm', mode: 'Presencial' },
+                fri: { start: '5:00am', end: '3:00pm', mode: 'Virtual' },
+                sat: { start: 'Libre', end: '', mode: '' },
+                sun: { start: 'Libre', end: '', mode: '' }
+            }
+        },
+        {
+            id: 2,
+            name: "Ventas",
+            schedule: {
+                mon: { start: '6:00am', end: '3:00pm', mode: 'Virtual' },
+                tue: { start: '6:00am', end: '3:00pm', mode: 'Presencial' },
+                wed: { start: '6:00am', end: '3:00pm', mode: 'Virtual' },
+                thu: { start: '6:00am', end: '3:00pm', mode: 'Presencial' },
+                fri: { start: '6:00am', end: '3:00pm', mode: 'Virtual' },
+                sat: { start: 'Libre', end: '', mode: '' },
+                sun: { start: 'Libre', end: '', mode: '' }
+            }
+        },
+        {
+            id: 3,
+            name: "Marketing",
+            schedule: {
+                mon: { start: '7:00am', end: '3:00pm', mode: 'Virtual' },
+                tue: { start: '7:00am', end: '3:00pm', mode: 'Presencial' },
+                wed: { start: '7:00am', end: '3:00pm', mode: 'Virtual' },
+                thu: { start: '7:00am', end: '3:00pm', mode: 'Presencial' },
+                fri: { start: '7:00am', end: '3:00pm', mode: 'Virtual' },
+                sat: { start: 'Libre', end: '', mode: '' },
+                sun: { start: 'Libre', end: '', mode: '' }
+            }
+        },
+        {
+            id: 4, name: "Soporte Tecnico",
+            schedule: {
+                mon: { start: '9:00am', end: '3:00pm', mode: 'Virtual' },
+                tue: { start: '9:00am', end: '3:00pm', mode: 'Presencial' },
+                wed: { start: '9:00am', end: '3:00pm', mode: 'Virtual' },
+                thu: { start: '9:00am', end: '3:00pm', mode: 'Presencial' },
+                fri: { start: '9:00am', end: '3:00pm', mode: 'Virtual' },
+                sat: { start: 'Libre', end: '', mode: '' },
+                sun: { start: 'Libre', end: '', mode: '' }
+            }
+        },
+        {
+            id: 5, name: "Analisis",
+            schedule: {
+                mon: { start: '10:00am', end: '3:00pm', mode: 'Virtual' },
+                tue: { start: '10:00am', end: '3:00pm', mode: 'Presencial' },
+                wed: { start: '10:00am', end: '3:00pm', mode: 'Virtual' },
+                thu: { start: '10:00am', end: '3:00pm', mode: 'Presencial' },
+                fri: { start: '10:00am', end: '3:00pm', mode: 'Virtual' },
+                sat: { start: 'Libre', end: '', mode: '' },
+                sun: { start: 'Libre', end: '', mode: '' }
+            }
+
+        },
     ],
     status: [
         {
@@ -880,7 +946,7 @@ router.post("/statuses", (req, res) => {
 });
 
 router.post("/data", (req, res) => {
-    const { name, startTime, breakStart, email, phone, area, sede, institution, password, } = req.body;
+    const { name, email, phone, area, sede, institution, password, } = req.body;
 
     // Validar que todos los campos están presentes
     if (!name || !email || !phone || !area || !institution || !password  || !startTime || !breakStart || !sede) {
