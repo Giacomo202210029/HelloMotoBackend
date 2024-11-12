@@ -542,30 +542,7 @@ module.exports = router;
  *                   type: string
  *                   example: "No existen trabajadores con el estado activo"
  */
-router.get("/workers/:statusId", (req, res)=>{
-    let statusId = req.params.statusId;
-    console.log("Se solicitaron los trabajadores con el estado con id", req.params.status)
-
-    if(!statusId || isNaN(statusId)){
-        res.status(HttpStatusCode.BadRequest).json({
-            message:"No ha ingresado un id de estado valido",
-            valid: data.status
-        })
-        return;
-    }
-
-    statusId = Number(statusId)
-
-    let statusIndex = data.status.findIndex(status=> status.id === statusId) + 1
-    if(!statusIndex){
-        res.status(HttpStatusCode.BadRequest).json({
-            message:"El id de estado solicitado no existe en la lista de estados",
-            valid: data.status
-        })
-        return;
-    }
-    res.status(HttpStatusCode.Ok).json(data.workers.filter(worker => worker.status === statusId));
-})
+// Endpoint para obtener los trabajadores por estado
 /**
  * @swagger
  * /api/v1/workers/{id}:
@@ -739,41 +716,6 @@ module.exports = router;
  *                   type: string
  *                   example: "No existe un trabajador con el ID 25"
  */
-router.put("/worker/:id/status/:status", (req, res) => {
-    let workerId = parseInt(req.params.id); // Convertir a número
-    let status = parseInt(req.params.status);
-
-    console.log(`Se solicitó actualizar el estado del trabajador con ID ${workerId} a ${status}`);
-
-    // Verificar si el workerId es válido
-    if (isNaN(workerId)) {
-        return res.status(HttpStatusCode.BadRequest).json({
-            message: "El parámetro ID del trabajador no fue proporcionado, o no tiene un formato correcto"
-        });
-    }
-
-    // Verificar si el status es válido
-    if (!data.status.some(s => s.id === status)) {
-        return res.status(HttpStatusCode.BadRequest).json({
-            message: "El estado solicitado no existe en la lista de estados posibles",
-            valid: data.status
-        });
-    }
-
-    // Buscar el trabajador en los datos
-    const workerIndex = data.workers.findIndex(worker => worker.id === workerId);
-
-    // Si no se encuentra al trabajador, enviar un error 404
-    if (workerIndex === -1) {
-        return res.status(HttpStatusCode.NotFound).json({
-            message: `No existe un trabajador con el ID ${workerId}`
-        });
-    }
-
-    // Reemplazar el estado del trabajador
-    data.workers[workerIndex].status = status;
-    return res.status(HttpStatusCode.Ok).json(data.workers[workerIndex]);
-});
 
 
 
@@ -1129,90 +1071,18 @@ router.put('/worker/:id/schedule', (req, res) => {
     }
 });
 
+router.put("/worker/:id/status", (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
 
-// Endpoint para iniciar el tiempo de trabajo de un trabajador
-router.post("/worker/:id/start", (req, res) => {
-    const workerId = parseInt(req.params.id);
-    const worker = data.workers.find(w => w.id === workerId);
-
-    if (!worker) {
-        return res.status(404).json({ message: "Trabajador no encontrado." });
+    const worker = data.workers.find(worker => worker.id === parseInt(id));
+    if (worker) {
+        worker.status = status;
+        res.status(200).json({ message: "Estado actualizado correctamente." });
+    } else {
+        res.status(404).json({ message: "Trabajador no encontrado." });
     }
-
-    // Cambiar el estado del trabajador a "Dentro" y registrar la hora de inicio
-    worker.status = 1; // Estado "Dentro"
-    worker.startTime = new Date(); // Hora de inicio
-
-    res.status(200).json({
-        message: "Tiempo de trabajo iniciado.",
-        startTime: worker.startTime
-    });
 });
-
-// Endpoint para detener el tiempo de trabajo de un trabajador
-router.post("/worker/:id/stop", (req, res) => {
-    const workerId = parseInt(req.params.id);
-    const worker = data.workers.find(w => w.id === workerId);
-
-    if (!worker) {
-        return res.status(404).json({ message: "Trabajador no encontrado." });
-    }
-
-    if (!worker.startTime) {
-        return res.status(400).json({ message: "El trabajador no ha iniciado un turno." });
-    }
-
-    // Calcular la duración del tiempo de trabajo
-    const endTime = new Date();
-    const duration = (endTime - new Date(worker.startTime)) / 1000 / 60; // Duración en minutos
-    worker.startTime = null;
-
-    // Registrar la hora trabajada en `registeredHours`
-    worker.registeredHours.push({
-        date: endTime.toISOString().split('T')[0],
-        start: worker.startTime,
-        end: endTime,
-        duration
-    });
-
-    worker.status = 2; // Cambiar estado a "Fuera"
-
-    res.status(200).json({
-        message: "Tiempo de trabajo detenido.",
-        duration
-    });
-});
-
-// Endpoint para cambiar el estado del trabajador a "Descanso"
-router.post("/worker/:id/break", (req, res) => {
-    const workerId = parseInt(req.params.id);
-    const worker = data.workers.find(w => w.id === workerId);
-
-    if (!worker) {
-        return res.status(404).json({ message: "Trabajador no encontrado." });
-    }
-
-    worker.status = 3; // Estado "Descanso"
-    worker.breakStart = new Date();
-
-    res.status(200).json({
-        message: "El trabajador está en descanso.",
-        breakStart: worker.breakStart
-    });
-});
-
-// Endpoint para obtener el resumen de trabajadores por estado
-router.get("/workers/status-summary", (req, res) => {
-    const summary = {
-        Dentro: data.workers.filter(w => w.status === 1).length,
-        Fuera: data.workers.filter(w => w.status === 2).length,
-        Descanso: data.workers.filter(w => w.status === 3).length
-    };
-
-    res.status(200).json(summary);
-});
-
-
 
 
 module.exports = {router, onInit};
