@@ -1084,5 +1084,43 @@ router.put("/worker/:id/status", (req, res) => {
     }
 });
 
+router.get("/api/v1/area/id/:name", (req, res) => {
+    const { name } = req.params;
+    const area = data.areas.find(area => area.name === name);
+    if (area) {
+        res.status(200).json({ id: area.id });
+    } else {
+        res.status(404).json({ message: "Área no encontrada." });
+    }
+});
+
+
+router.get("/area/name/:id", (req, res) => {
+    const { id } = req.params;
+    const area = data.areas.find(area => area.id === parseInt(id)); // Buscar área por ID
+    if (area) {
+        res.status(HttpStatusCode.Ok).json({ name: area.name }); // Devuelve el nombre del área
+    } else {
+        res.status(HttpStatusCode.NotFound).json({ message: "Área no encontrada." });
+    }
+});
+
+
+router.get("/area/schedule/:id", (req, res) => {
+    const { id } = req.params;
+    const area = data.areas.find(area => area.id === parseInt(id));
+    if (area) {
+        res.status(HttpStatusCode.Ok).json({ schedule: area.schedule });
+    } else {
+        res.status(HttpStatusCode.NotFound).json({ message: "Trabajador no encontrado." });
+    }
+});
+
+router.get("/area/name", (req, res) => {
+    const areaNames = data.areas.map(area => ({ name: area.name, id: area.id }));
+    res.status(200).json(areaNames);
+});
+
+
 
 module.exports = {router, onInit};
