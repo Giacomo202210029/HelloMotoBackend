@@ -27,7 +27,10 @@ let data = {
             id: 1,
             name: "Juan Peterson",
             status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
-            registeredHours: [], // Registro de horas trabajadas
+            registeredHours: [
+                {date: "2024-11-22", worked: 5, break: 2, overtime: 1},
+                {date: "2024-11-23", worked: 4, break: 1, overtime: 2}
+            ],
             startTime: null, // Hora de inicio de trabajo
             breakStart: null,
             email: "juan.peterson@example.com",
@@ -52,7 +55,10 @@ let data = {
             id: 2,
             name: "Sam Perez",
             status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
-            registeredHours: [], // Registro de horas trabajadas
+            registeredHours: [
+                { date: "2024-11-22", worked: 5, break: 2, overtime: 1 },
+                { date: "2024-11-23", worked: 4, break: 1, overtime: 2 }
+            ],
             startTime: null, // Hora de inicio de trabajo
             breakStart: null,
             email: "sam.perez@example.com",
@@ -1078,12 +1084,33 @@ router.put("/worker/:id/status", (req, res) => {
 
     const worker = data.workers.find(worker => worker.id === parseInt(id));
     if (worker) {
+        const currentTime = new Date();
+        const today = currentTime.toISOString().slice(0, 10); // Fecha actual (YYYY-MM-DD)
+
+        // Si el trabajador estaba trabajando o descansando, calculamos las horas
+        if (worker.startTime && (status === 2 || status === 3)) {
+            const hoursWorked = (currentTime - new Date(worker.startTime)) / (1000 * 60 * 60);
+            const type = worker.status === 1 ? "Trabajo" : "Descanso";
+
+            // Registrar las horas en registeredHours
+            const existingRecord = worker.registeredHours.find(r => r.date === today);
+            if (existingRecord) {
+                existingRecord[type] += hoursWorked;
+            } else {
+                worker.registeredHours.push({ date: today, Trabajo: 0, Descanso: 0, Extras: 0, [type]: hoursWorked });
+            }
+        }
+
+        // Actualizamos el estado y la hora de inicio si es necesario
         worker.status = status;
-        res.status(200).json({ message: "Estado actualizado correctamente." });
+        worker.startTime = status === 1 ? currentTime : null;
+
+        res.status(200).json({ message: "Estado actualizado correctamente.", worker });
     } else {
         res.status(404).json({ message: "Trabajador no encontrado." });
     }
 });
+
 
 router.get("/api/v1/area/id/:name", (req, res) => {
     const { name } = req.params;
@@ -1121,6 +1148,7 @@ router.get("/area/name", (req, res) => {
     const areaNames = data.areas.map(area => ({ name: area.name, id: area.id }));
     res.status(200).json(areaNames);
 });
+
 
 
 
