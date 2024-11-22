@@ -1,4 +1,5 @@
 const express = require("express");
+const fs= require("fs"); // Importar el módulo fs para leer archivos
 const {HttpStatusCode} = require("axios")
 const router = express.Router();
 function getWeekDate(day, month, year){
@@ -125,7 +126,7 @@ let data = {
         {
             id: 5,
             name: "Peter Parker",
-            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
+            status: 3, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
             registeredHours: [], // Registro de horas trabajadas
             startTime: null, // Hora de inicio de trabajo
             breakStart: null,
