@@ -28,8 +28,14 @@ let data = {
             name: "Juan Peterson",
             status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
             registeredHours: [
-                {date: "2024-11-22", worked: 5, break: 2, overtime: 1},
-                {date: "2024-11-23", worked: 4, break: 1, overtime: 2}
+                {date: "2024-11-22", worked: 5, break: 9, overtime: 1},
+                {date: "2024-11-23", worked: 4, break: 6, overtime: 2},
+                {date: "2024-11-23", worked: 4, break: 1, overtime: 2},
+                {date: "2024-11-24", worked: 4, break: 1, overtime: 2},
+                {date: "2024-11-25", worked: 4, break: 1, overtime: 2},
+                {date: "2024-11-26", worked: 4, break: 1, overtime: 2},
+                {date: "2024-11-27", worked: 4, break: 1, overtime: 2},
+                {date: "2024-11-28", worked: 4, break: 1, overtime: 2},
             ],
             startTime: null, // Hora de inicio de trabajo
             breakStart: null,
@@ -267,6 +273,20 @@ let data = {
             latitude: -12.046,
             statusTime: '09:00:00'
         }
+    ],
+    messages: [
+        {
+            from: 1, // ID del remitente
+            to: 2, // ID del destinatario
+            message: "Hola, ¿cómo estás?",
+            timestamp: "2024-11-28T10:00:00Z" // ISO 8601
+        },
+        {
+            from: 2,
+            to: 1,
+            message: "¡Todo bien! ¿Y tú?",
+            timestamp: "2024-11-28T10:05:00Z"
+        },
     ]
 }
 
@@ -1149,7 +1169,44 @@ router.get("/area/name", (req, res) => {
     res.status(200).json(areaNames);
 });
 
+router.post("/messages", (req, res) => {
+    const { from, to, message } = req.body;
 
+    // Validar que todos los campos estén presentes
+    if (!from || !to || !message) {
+        return res.status(400).json({ error: "Todos los campos son requeridos." });
+    }
+
+    const newMessage = {
+        from,
+        to,
+        message,
+        timestamp: new Date().toISOString() // Fecha actual en formato ISO
+    };
+
+    // Agregar el mensaje al arreglo de mensajes
+    data.messages.push(newMessage);
+
+    res.status(201).json({ message: "Mensaje enviado exitosamente.", newMessage });
+});
+
+// Ruta para obtener los mensajes entre dos usuarios
+router.get("/messages/:from/:to", (req, res) => {
+    const { from, to } = req.params;
+
+    // Filtrar los mensajes entre `from` y `to`
+    const chatMessages = data.messages.filter(
+        msg =>
+            (msg.from === parseInt(from) && msg.to === parseInt(to)) ||
+            (msg.from === parseInt(to) && msg.to === parseInt(from))
+    );
+
+    res.json(chatMessages);
+});
+
+router.get("/admins", (req, res) => {
+    res.status(HttpStatusCode.Ok).send(data.admins);
+});
 
 
 module.exports = {router, onInit};
