@@ -1,3 +1,5 @@
+const { messages } = require("./routes.js");
+
 const io = require("socket.io")(3500, {
     cors: {
         origin: "http://localhost:5173", // Ajusta según tu frontend
@@ -17,17 +19,25 @@ io.on("connection", (socket) => {
         console.log(`Usuario ${userId} registrado con socket ID: ${socket.id}`);
     });
 
-    // Manejar mensajes privados
-    socket.on("privateMessage", ({ to, message, from }) => {
-        const recipientSocketId = users.get(to); // Busca el socket.id del destinatario
+    socket.on("privateMessage", ({ from, to, message }) => {
+        const newMessage = {
+            from,
+            to,
+            message,
+            timestamp: new Date().toISOString(),
+        };
 
+        // Guardar el mensaje en memoria
+        messages.push(newMessage); // Asegúrate de guardar los mensajes aquí
+
+        const recipientSocketId = users.get(to);
         if (recipientSocketId) {
-            io.to(recipientSocketId).emit("message", { message, from }); // Envía el mensaje al destinatario
-            console.log(`Mensaje enviado de ${from} a ${to}: ${message}`);
-        } else {
-            console.log(`El usuario ${to} no está conectado.`);
+            io.to(recipientSocketId).emit("message", newMessage); // Envía el mensaje en tiempo real
         }
+
+        console.log("Mensaje almacenado y enviado:", newMessage);
     });
+
 
     // Manejar desconexión
     socket.on("disconnect", () => {

@@ -245,9 +245,9 @@ let data = {
         }
     ],
     admins: [
-        {id: 1, name: "Bri", area:"Administración", password:"Bri"},
-        {id: 2, name: "Señor Julio", area: "Boss", password: "Señor Julio"},
-        {id: 3, name: "a", area: "Administración", password: "a"}
+        {id: 56000, name: "Bri", area:"Administración", password:"Bri"},
+        {id: 56001, name: "Señor Julio", area: "Boss", password: "Señor Julio"},
+        {id: 56002, name: "a", area: "Administración", password: "a"}
         // Otros administradores...
     ],
     statusChanges: [
@@ -288,7 +288,12 @@ let data = {
             timestamp: "2024-11-28T10:05:00Z"
         },
     ]
+
 }
+
+
+
+
 
 /**
  * @swagger
@@ -1172,8 +1177,10 @@ router.get("/area/name", (req, res) => {
 router.post("/messages", (req, res) => {
     const { from, to, message } = req.body;
 
-    // Validar que todos los campos estén presentes
+    console.log("Datos recibidos en POST /messages:", req.body);
+
     if (!from || !to || !message) {
+        console.error("Error: Datos incompletos en el payload");
         return res.status(400).json({ error: "Todos los campos son requeridos." });
     }
 
@@ -1181,28 +1188,31 @@ router.post("/messages", (req, res) => {
         from,
         to,
         message,
-        timestamp: new Date().toISOString() // Fecha actual en formato ISO
+        timestamp: new Date().toISOString(),
     };
 
-    // Agregar el mensaje al arreglo de mensajes
+    // Guardar el mensaje en el arreglo
     data.messages.push(newMessage);
+    console.log("Mensaje almacenado en el backend:", newMessage);
 
     res.status(201).json({ message: "Mensaje enviado exitosamente.", newMessage });
 });
 
-// Ruta para obtener los mensajes entre dos usuarios
+
 router.get("/messages/:from/:to", (req, res) => {
     const { from, to } = req.params;
 
-    // Filtrar los mensajes entre `from` y `to`
     const chatMessages = data.messages.filter(
-        msg =>
-            (msg.from === parseInt(from) && msg.to === parseInt(to)) ||
-            (msg.from === parseInt(to) && msg.to === parseInt(from))
+        (msg) =>
+            (msg.from.toString() === from && msg.to.toString() === to) ||
+            (msg.from.toString() === to && msg.to.toString() === from)
     );
 
+    console.log(`Historial encontrado (${from} ↔ ${to}):`, chatMessages);
     res.json(chatMessages);
 });
+
+
 
 router.get("/admins", (req, res) => {
     res.status(HttpStatusCode.Ok).send(data.admins);
