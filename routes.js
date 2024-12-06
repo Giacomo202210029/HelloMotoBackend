@@ -1,7 +1,9 @@
 const express = require("express");
-const fs= require("fs"); // Importar el módulo fs para leer archivos
+
 const {HttpStatusCode} = require("axios")
 const router = express.Router();
+
+
 function getWeekDate(day, month, year){
     //obtiene el dia de la semana
     let date = new Date(Date.UTC(year, month, day));
@@ -21,275 +23,40 @@ function getFormattedDate(day, month, year) {
 }
 let lastUsedUserId = 5
 let lastUsedStatusId = 3
-let data = {
-    workers: [
-        {
-            id: 1,
-            name: "Juan Peterson",
-            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
-            registeredHours: [
-                {date: "2024-11-22", worked: 5, break: 9, overtime: 1},
-                {date: "2024-11-23", worked: 4, break: 6, overtime: 2},
-                {date: "2024-11-23", worked: 4, break: 1, overtime: 2},
-                {date: "2024-11-24", worked: 4, break: 1, overtime: 2},
-                {date: "2024-11-25", worked: 4, break: 1, overtime: 2},
-                {date: "2024-11-26", worked: 4, break: 1, overtime: 2},
-                {date: "2024-11-27", worked: 4, break: 1, overtime: 2},
-                {date: "2024-11-28", worked: 4, break: 1, overtime: 2},
-            ],
-            startTime: null, // Hora de inicio de trabajo
-            breakStart: null,
-            email: "juan.peterson@example.com",
-            phone: "987654321",
-            area: 1,
-            sede: "Casa de Señor Julio",
-            institution: "SENATI",
-            password: "Juan Peterson",
-            latitude: -12.04593,
-            longitude: -77.03005,
-            schedule: {
-                mon: { start: '9:00am', end: '5:00pm', mode: 'Presencial' },
-                tue: { start: '9:00am', end: '5:00pm', mode: 'Presencial' },
-                wed: { start: '9:00am', end: '5:00pm', mode: 'Virtual' },
-                thu: { start: '9:00am', end: '5:00pm', mode: 'Presencial' },
-                fri: { start: '9:00am', end: '5:00pm', mode: 'Virtual' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
-        },
-        {
-            id: 2,
-            name: "Sam Perez",
-            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
-            registeredHours: [
-                { date: "2024-11-22", worked: 5, break: 2, overtime: 1 },
-                { date: "2024-11-23", worked: 4, break: 1, overtime: 2 }
-            ],
-            startTime: null, // Hora de inicio de trabajo
-            breakStart: null,
-            email: "sam.perez@example.com",
-            phone: "912345678",
-            area: 2,
-            sede: "Casa de Señor Julio",
-            institution: "SENATI",
-            password: "Sam Perez",
-            latitude: -12.05299,
-            longitude: -77.03767,
-            schedule: {
-                mon: { start: '10:00am', end: '6:00pm', mode: 'Presencial' },
-                tue: { start: '10:00am', end: '6:00pm', mode: 'Virtual' },
-                wed: { start: '10:00am', end: '6:00pm', mode: 'Presencial' },
-                thu: { start: '10:00am', end: '6:00pm', mode: 'Virtual' },
-                fri: { start: '10:00am', end: '6:00pm', mode: 'Presencial' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
-        },
-        {
-            id: 3,
-            name: "Celeste Jr",
-            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
-            registeredHours: [], // Registro de horas trabajadas
-            startTime: null, // Hora de inicio de trabajo
-            breakStart: null,
-            email: "celeste.jr@example.com",
-            phone: "989898989",
-            area: 3,
-            sede: "Casa de Señor Julio",
-            institution: "SENATI",
-            password: "Celeste Jr",
-            latitude: -12.04636,
-            longitude:  -77.04279,
-            schedule: {
-                mon: { start: '8:00am', end: '4:00pm', mode: 'Presencial' },
-                tue: { start: '8:00am', end: '4:00pm', mode: 'Virtual' },
-                wed: { start: '8:00am', end: '4:00pm', mode: 'Presencial' },
-                thu: { start: '8:00am', end: '4:00pm', mode: 'Virtual' },
-                fri: { start: '8:00am', end: '4:00pm', mode: 'Presencial' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
-        },
-        {
-            id: 4,
-            name: "Sammy el Heladero",
-            status: 1, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
-            registeredHours: [], // Registro de horas trabajadas
-            startTime: null, // Hora de inicio de trabajo
-            breakStart: null,
-            email: "sammy.heladero@example.com",
-            phone: "977777777",
-            area: 5,
-            sede: "Miraflores",
-            institution: "SENATI",
-            password: "Sammy el Heladero",
-            latitude: -12.04318,
-            longitude: -77.02824,
-            schedule: {
-                mon: { start: '9:00am', end: '5:00pm', mode: 'Presencial' },
-                tue: { start: '9:00am', end: '5:00pm', mode: 'Presencial' },
-                wed: { start: '9:00am', end: '5:00pm', mode: 'Presencial' },
-                thu: { start: '9:00am', end: '5:00pm', mode: 'Presencial' },
-                fri: { start: '9:00am', end: '5:00pm', mode: 'Presencial' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
-        },
-        {
-            id: 5,
-            name: "Peter Parker",
-            status: 3, // Estado inicial: 1 = Dentro, 2 = Fuera, 3 = Descanso
-            registeredHours: [], // Registro de horas trabajadas
-            startTime: null, // Hora de inicio de trabajo
-            breakStart: null,
-            email: "peter.parker@example.com",
-            phone: "911111111",
-            area: 4,
-            sede: "Casa de Señor Julio",
-            institution: "SENATI",
-            password: "Peter Parker",
-            latitude: -12.0464,
-            longitude: -77.0428,
-            schedule: {
-                mon: { start: '7:00am', end: '3:00pm', mode: 'Virtual' },
-                tue: { start: '7:00am', end: '3:00pm', mode: 'Presencial' },
-                wed: { start: '7:00am', end: '3:00pm', mode: 'Virtual' },
-                thu: { start: '7:00am', end: '3:00pm', mode: 'Presencial' },
-                fri: { start: '7:00am', end: '3:00pm', mode: 'Virtual' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
-        }
-    ],
-    areas:[
-        {
-            id: 1,
-            name: "Android",
-            schedule: {
-                mon: { start: '5:00am', end: '3:00pm', mode: 'Virtual' },
-                tue: { start: '5:00am', end: '3:00pm', mode: 'Presencial' },
-                wed: { start: '5:00am', end: '3:00pm', mode: 'Virtual' },
-                thu: { start: '5:00am', end: '3:00pm', mode: 'Presencial' },
-                fri: { start: '5:00am', end: '3:00pm', mode: 'Virtual' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
-        },
-        {
-            id: 2,
-            name: "Ventas",
-            schedule: {
-                mon: { start: '6:00am', end: '3:00pm', mode: 'Virtual' },
-                tue: { start: '6:00am', end: '3:00pm', mode: 'Presencial' },
-                wed: { start: '6:00am', end: '3:00pm', mode: 'Virtual' },
-                thu: { start: '6:00am', end: '3:00pm', mode: 'Presencial' },
-                fri: { start: '6:00am', end: '3:00pm', mode: 'Virtual' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
-        },
-        {
-            id: 3,
-            name: "Marketing",
-            schedule: {
-                mon: { start: '7:00am', end: '3:00pm', mode: 'Virtual' },
-                tue: { start: '7:00am', end: '3:00pm', mode: 'Presencial' },
-                wed: { start: '7:00am', end: '3:00pm', mode: 'Virtual' },
-                thu: { start: '7:00am', end: '3:00pm', mode: 'Presencial' },
-                fri: { start: '7:00am', end: '3:00pm', mode: 'Virtual' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
-        },
-        {
-            id: 4, name: "Soporte Tecnico",
-            schedule: {
-                mon: { start: '9:00am', end: '3:00pm', mode: 'Virtual' },
-                tue: { start: '9:00am', end: '3:00pm', mode: 'Presencial' },
-                wed: { start: '9:00am', end: '3:00pm', mode: 'Virtual' },
-                thu: { start: '9:00am', end: '3:00pm', mode: 'Presencial' },
-                fri: { start: '9:00am', end: '3:00pm', mode: 'Virtual' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
-        },
-        {
-            id: 5, name: "Analisis",
-            schedule: {
-                mon: { start: '10:00am', end: '3:00pm', mode: 'Virtual' },
-                tue: { start: '10:00am', end: '3:00pm', mode: 'Presencial' },
-                wed: { start: '10:00am', end: '3:00pm', mode: 'Virtual' },
-                thu: { start: '10:00am', end: '3:00pm', mode: 'Presencial' },
-                fri: { start: '10:00am', end: '3:00pm', mode: 'Virtual' },
-                sat: { start: 'Libre', end: '', mode: '' },
-                sun: { start: 'Libre', end: '', mode: '' }
-            }
 
-        },
-    ],
-    status: [
-        {
-            id: 1,
-            name: "Dentro",
-            color: '#36a2eb'
-        },
-        {
-            id: 2,
-            name: "Fuera",
-            color: '#ff6384'
-        },
-        {
-            id: 3,
-            name: "Descanso",
-            color: '#ffcd56'
-        }
-    ],
-    admins: [
-        {id: 56000, name: "Bri", area:"Administración", password:"Bri"},
-        {id: 56001, name: "Señor Julio", area: "Boss", password: "Señor Julio"},
-        {id: 56002, name: "a", area: "Administración", password: "a"}
-        // Otros administradores...
-    ],
-    statusChanges: [
-        {
-            id: 1,
-            date: '2023-10-29',
-            start: '08:00:00',
-            end: '17:00:00',
-            workerId: 1,
-            statusId: 1,
-            longitude: -76.991,
-            latitude: -12.046,
-            statusTime: '08:00:00'
-        },
-        {
-            id: 2,
-            date: '2023-10-29',
-            start: '09:00:00',
-            end: '18:00:00',
-            workerId: 2,
-            statusId: 2,
-            longitude: -76.991,
-            latitude: -12.046,
-            statusTime: '09:00:00'
-        }
-    ],
-    messages: [
-        {
-            from: 1, // ID del remitente
-            to: 2, // ID del destinatario
-            message: "Hola, ¿cómo estás?",
-            timestamp: "2024-11-28T10:00:00Z" // ISO 8601
-        },
-        {
-            from: 2,
-            to: 1,
-            message: "¡Todo bien! ¿Y tú?",
-            timestamp: "2024-11-28T10:05:00Z"
-        },
-    ]
+const fs = require('fs');
+const path = require('path');
 
+// Ruta al archivo JSON donde se guardarán los datos
+const dataFilePath = path.join(__dirname, 'data.json');
+
+// Leer los datos desde el archivo al iniciar la aplicación
+function loadData() {
+    try {
+        // Leer el archivo JSON y parsear su contenido
+        const rawData = fs.readFileSync(dataFilePath, 'utf8');
+        return JSON.parse(rawData); // Retorna los datos como objeto
+    } catch (err) {
+        console.log('Error al leer el archivo:', err);
+        // Si ocurre un error (como que el archivo no existe), retornar datos por defecto
+        return { workers: [], areas: [], status: [], admins: [], statusChanges: [], messages: [] };
+    }
 }
+
+// Guardar los datos en el archivo JSON
+function saveData(data) {
+    try {
+        // Convertir el objeto a una cadena JSON con formato bonito
+        const jsonData = JSON.stringify(data, null, 2);
+        fs.writeFileSync(dataFilePath, jsonData, 'utf8'); // Guardar el archivo
+        console.log('Datos guardados correctamente');
+    } catch (err) {
+        console.log('Error al guardar el archivo:', err);
+    }
+}
+
+// Inicializar los datos al cargar el servidor
+let data = loadData();
 
 
 
@@ -303,6 +70,7 @@ let data = {
  *   - name: Status
  *     description: Endpoints relacionados con los estados
  */
+/*
 function onInit(startYear, endYear, startMont, endMonth, startDay, endDay, weekdays) {
     for (let index in data.workers) {
         data.workers[index].status = data.status[Math.floor(Math.random() * data.status.length)].id;
@@ -336,7 +104,8 @@ function onInit(startYear, endYear, startMont, endMonth, startDay, endDay, weekd
         }
     }
 }
-
+*/
+function onInit(startYear, endYear, startMont, endMonth, startDay, endDay, weekdays){}
 
 /**
  * @swagger
@@ -391,6 +160,7 @@ function onInit(startYear, endYear, startMont, endMonth, startDay, endDay, weekd
  */
 router.get("/data", (req, res) => {
     res.status(HttpStatusCode.Ok).send(data.workers);
+    saveData(data);
 });
 /**
  * @swagger
@@ -507,16 +277,17 @@ router.post('/login', (req, res) => {
     const admin = data.admins.find(adm => adm.name === username && adm.password === password);
 
     if (admin) {
-        res.status(200).json({
+        return res.status(200).json({
             message: "Inicio de sesión exitoso",
             adminId: admin.id
         });
     } else {
-        res.status(401).json({
+        return res.status(401).json({
             message: "Nombre de usuario o contraseña incorrectos"
         });
     }
 });
+
 
 module.exports = router;
 
@@ -686,6 +457,7 @@ router.put("/workers/:id", (req, res) => {
         message: "Trabajador actualizado correctamente.",
         worker
     });
+    saveData(data)
 });
 
 module.exports = router;
@@ -848,6 +620,7 @@ router.put("/statuses/:index", (req, res) => {
     res.status(HttpStatusCode.Ok).json({
         message: `Estado "${previousStatus}" actualizado a "${newStatus}".`
     });
+    saveData(data)
 });
 /**
  * @swagger
@@ -917,15 +690,16 @@ router.post("/statuses", (req, res) => {
     res.status(HttpStatusCode.Created).json({
         message: `Estado "${newStatus}" creado con éxito.`
     });
+    saveData(data)
 });
 
 router.post("/data", (req, res) => {
-    const { name, email, phone, area, sede, institution, password, } = req.body;
+    const { name, email, phone, area, sede, institution, password, startTime, breakStart } = req.body;
 
-    // Validar que todos los campos están presentes
-    if (!name || !email || !phone || !area || !institution || !password  || !startTime || !breakStart || !sede) {
-        return res.status(HttpStatusCode.BadRequest).json({
-            message: "Todos los campos son obligatorios"
+    // Validar que todos los campos requeridos están presentes
+    if (!name || !email || !phone || !area || !institution || !password || !sede) {
+        return res.status(400).json({
+            message: "Todos los campos son obligatorios."
         });
     }
 
@@ -939,24 +713,28 @@ router.post("/data", (req, res) => {
         institution,
         sede,
         password,
-        startTime:0,
-        breakStart:0,
+        startTime: startTime || 0,  // Si no se pasa, se usa 0 por defecto
+        breakStart: breakStart || 0, // Lo mismo para breakStart
         longitude: 0,
-        latitude:0,
+        latitude: 0,
         status: 1, // Estado por defecto (Dentro)
         registeredHours: [] // Iniciar con horas registradas vacías
-        //todo como hacemos con el horariooooo, aqui tenemos que pasar el schedule: { thu: start break end}
     };
 
     // Añadir el nuevo trabajador a la lista de trabajadores
     data.workers.push(newWorker);
 
+    // Guardar los datos actualizados en el archivo
+    saveData(data); // Asegúrate de guardar los cambios en el archivo
+
     // Enviar una respuesta de éxito
-    res.status(HttpStatusCode.Created).json({
-        message: "Miembro añadido correctamente",
+    res.status(201).json({
+        message: "Trabajador añadido correctamente",
         worker: newWorker
     });
 });
+
+
 
 router.post("/admin/register", (req, res) => {
     const { name, area, password } = req.body;
@@ -984,6 +762,7 @@ router.post("/admin/register", (req, res) => {
         message: "Administrador registrado correctamente.",
         admin: newAdmin
     });
+    saveData(data)
 });
 
 router.post("/worker/register", (req, res) => {
@@ -1018,6 +797,7 @@ router.post("/worker/register", (req, res) => {
         message: "Trabajador registrado correctamente.",
         worker: newWorker
     });
+    saveData(data)
 });
 
 
@@ -1051,6 +831,7 @@ router.post("/status_change", (req, res) => {
         message: "Cambio de estado registrado correctamente.",
         status_change: newStatusChange
     });
+    saveData(data)
 });
 
 router.post("/worker/login", (req, res) => {
@@ -1074,7 +855,7 @@ router.post("/worker/login", (req, res) => {
         return res.status(401).json({ message: "Contraseña incorrecta." });
     }
 
-    // Si el inicio de sesión es exitoso
+    // Si el inicio de sesión es exitoso, devolver los datos del trabajador
     res.status(200).json({
         message: "Inicio de sesión exitoso",
         worker: {
@@ -1087,6 +868,7 @@ router.post("/worker/login", (req, res) => {
         }
     });
 });
+
 
 // En tu archivo de rutas en el servidor (e.g., routes.js)
 router.put('/worker/:id/schedule', (req, res) => {
@@ -1101,6 +883,7 @@ router.put('/worker/:id/schedule', (req, res) => {
     } else {
         res.status(HttpStatusCode.BadRequest).json({ message: "Trabajador no encontrado." });
     }
+    saveData(data)
 });
 
 router.put("/worker/:id/status", (req, res) => {
@@ -1134,6 +917,7 @@ router.put("/worker/:id/status", (req, res) => {
     } else {
         res.status(404).json({ message: "Trabajador no encontrado." });
     }
+    saveData(data)
 });
 
 
@@ -1196,6 +980,7 @@ router.post("/messages", (req, res) => {
     console.log("Mensaje almacenado en el backend:", newMessage);
 
     res.status(201).json({ message: "Mensaje enviado exitosamente.", newMessage });
+    saveData(data)
 });
 
 

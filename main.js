@@ -4,6 +4,8 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 const {router, onInit} = require("./routes");
 
+const https = require("https");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -39,3 +41,14 @@ app.listen(PORT, () => {
     onInit(2023, 2024, 11, 9, 15, 16, 5)
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+/*
+const server = https.createServer({
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+}, app);
+
+server.listen(PORT, () => {
+    console.log(`Server is running on https://jypsac.dyndns.org:${PORT}`);
+})
+}
+*/

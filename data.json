@@ -1,0 +1,632 @@
+{
+  "workers": [
+    {
+      "id": 1,
+      "name": "Juan Peterson",
+      "status": 2,
+      "registeredHours": [
+        {
+          "date": "2024-11-22",
+          "worked": 5,
+          "break": 9,
+          "overtime": 1
+        },
+        {
+          "date": "2024-11-23",
+          "worked": 4,
+          "break": 6,
+          "overtime": 2
+        },
+        {
+          "date": "2024-11-23",
+          "worked": 4,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2024-11-24",
+          "worked": 4,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2024-11-25",
+          "worked": 4,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2024-11-26",
+          "worked": 4,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2024-11-27",
+          "worked": 4,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2024-12-06",
+          "worked": 10,
+          "break": 1,
+          "overtime": 2,
+          "Trabajo": 0.0049119444444444445
+        }
+      ],
+      "startTime": null,
+      "breakStart": null,
+      "email": "juan.peterson@example.com",
+      "phone": "987654321",
+      "area": 1,
+      "sede": "Casa de Señor Julio",
+      "institution": "SENATI",
+      "password": "Juan Peterson",
+      "latitude": -12.04593,
+      "longitude": -77.03005,
+      "schedule": {
+        "mon": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Presencial"
+        },
+        "tue": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Sam Perez",
+      "status": 1,
+      "registeredHours": [
+        {
+          "date": "2024-11-22",
+          "worked": 5,
+          "break": 2,
+          "overtime": 1
+        },
+        {
+          "date": "2024-11-23",
+          "worked": 4,
+          "break": 1,
+          "overtime": 2
+        }
+      ],
+      "startTime": null,
+      "breakStart": null,
+      "email": "sam.perez@example.com",
+      "phone": "912345678",
+      "area": 2,
+      "sede": "Casa de Señor Julio",
+      "institution": "SENATI",
+      "password": "Sam Perez",
+      "latitude": -12.05299,
+      "longitude": -77.03767,
+      "schedule": {
+        "mon": {
+          "start": "10:00am",
+          "end": "6:00pm",
+          "mode": "Presencial"
+        },
+        "tue": {
+          "start": "10:00am",
+          "end": "6:00pm",
+          "mode": "Virtual"
+        },
+        "wed": {
+          "start": "10:00am",
+          "end": "6:00pm",
+          "mode": "Presencial"
+        },
+        "thu": {
+          "start": "10:00am",
+          "end": "6:00pm",
+          "mode": "Virtual"
+        },
+        "fri": {
+          "start": "10:00am",
+          "end": "6:00pm",
+          "mode": "Presencial"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "Celeste Jr",
+      "status": 1,
+      "registeredHours": [],
+      "startTime": null,
+      "breakStart": null,
+      "email": "celeste.jr@example.com",
+      "phone": "989898989",
+      "area": 3,
+      "sede": "Casa de Señor Julio",
+      "institution": "SENATI",
+      "password": "Celeste Jr",
+      "latitude": -12.04636,
+      "longitude": -77.04279,
+      "schedule": {
+        "mon": {
+          "start": "8:00am",
+          "end": "4:00pm",
+          "mode": "Presencial"
+        },
+        "tue": {
+          "start": "8:00am",
+          "end": "4:00pm",
+          "mode": "Virtual"
+        },
+        "wed": {
+          "start": "8:00am",
+          "end": "4:00pm",
+          "mode": "Presencial"
+        },
+        "thu": {
+          "start": "8:00am",
+          "end": "4:00pm",
+          "mode": "Virtual"
+        },
+        "fri": {
+          "start": "8:00am",
+          "end": "4:00pm",
+          "mode": "Presencial"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "Sammy el Heladero",
+      "status": 1,
+      "registeredHours": [],
+      "startTime": null,
+      "breakStart": null,
+      "email": "sammy.heladero@example.com",
+      "phone": "977777777",
+      "area": 5,
+      "sede": "Miraflores",
+      "institution": "SENATI",
+      "password": "Sammy el Heladero",
+      "latitude": -12.04318,
+      "longitude": -77.02824,
+      "schedule": {
+        "mon": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Presencial"
+        },
+        "tue": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Presencial"
+        },
+        "thu": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "9:00am",
+          "end": "5:00pm",
+          "mode": "Presencial"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "Peter Parker",
+      "status": 3,
+      "registeredHours": [],
+      "startTime": null,
+      "breakStart": null,
+      "email": "peter.parker@example.com",
+      "phone": "911111111",
+      "area": 4,
+      "sede": "Casa de Señor Julio",
+      "institution": "SENATI",
+      "password": "Peter Parker",
+      "latitude": -12.0464,
+      "longitude": -77.0428,
+      "schedule": {
+        "mon": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "tue": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    }
+  ],
+  "areas": [
+    {
+      "id": 1,
+      "name": "Android",
+      "schedule": {
+        "mon": {
+          "start": "5:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "tue": {
+          "start": "5:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "5:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "5:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "5:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Ventas",
+      "schedule": {
+        "mon": {
+          "start": "6:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "tue": {
+          "start": "6:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "6:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "6:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "6:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "Marketing",
+      "schedule": {
+        "mon": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "tue": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "7:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "Soporte Tecnico",
+      "schedule": {
+        "mon": {
+          "start": "9:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "tue": {
+          "start": "9:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "9:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "9:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "9:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "Analisis",
+      "schedule": {
+        "mon": {
+          "start": "10:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "tue": {
+          "start": "10:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "10:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "10:00am",
+          "end": "3:00pm",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "10:00am",
+          "end": "3:00pm",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
+    }
+  ],
+  "status": [
+    {
+      "id": 1,
+      "name": "Dentro",
+      "color": "#36a2eb"
+    },
+    {
+      "id": 2,
+      "name": "Fuera",
+      "color": "#ff6384"
+    },
+    {
+      "id": 3,
+      "name": "Descanso",
+      "color": "#ffcd56"
+    }
+  ],
+  "admins": [
+    {
+      "id": 56000,
+      "name": "Bri",
+      "area": "Administración",
+      "password": "Bri"
+    },
+    {
+      "id": 56001,
+      "name": "Señor Julio",
+      "area": "Boss",
+      "password": "Señor Julio"
+    },
+    {
+      "id": 56002,
+      "name": "a",
+      "area": "Administración",
+      "password": "a"
+    }
+  ],
+  "statusChanges": [
+    {
+      "id": 1,
+      "date": "2023-10-29",
+      "start": "08:00:00",
+      "end": "17:00:00",
+      "workerId": 1,
+      "statusId": 1,
+      "longitude": -76.991,
+      "latitude": -12.046,
+      "statusTime": "08:00:00"
+    },
+    {
+      "id": 2,
+      "date": "2023-10-29",
+      "start": "09:00:00",
+      "end": "18:00:00",
+      "workerId": 2,
+      "statusId": 2,
+      "longitude": -76.991,
+      "latitude": -12.046,
+      "statusTime": "09:00:00"
+    }
+  ],
+  "messages": [
+    {
+      "from": 1,
+      "to": 2,
+      "message": "Hola, ¿cómo estás?",
+      "timestamp": "2024-11-28T10:00:00Z"
+    },
+    {
+      "from": 2,
+      "to": 1,
+      "message": "¡Todo bien! ¿Y tú?",
+      "timestamp": "2024-11-28T10:05:00Z"
+    },
+    {
+      "from": 3,
+      "to": "56000",
+      "message": "BRIBRIBRI",
+      "timestamp": "2024-12-06T20:43:29.478Z"
+    },
+    {
+      "from": 56002,
+      "to": 3,
+      "message": "holiwi",
+      "timestamp": "2024-12-06T20:43:51.985Z"
+    },
+    {
+      "from": 56002,
+      "to": 1,
+      "message": "tgaeogoasgao",
+      "timestamp": "2024-12-06T21:33:41.529Z"
+    }
+  ]
+}
