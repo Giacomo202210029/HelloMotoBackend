@@ -2,7 +2,7 @@
   "workers": [
     {
       "id": 1,
-      "name": "Juan Peterson",
+      "name": "Juan Petersonn",
       "status": 2,
       "registeredHours": [
         {
@@ -48,11 +48,10 @@
           "overtime": 2
         },
         {
-          "date": "2024-12-06",
-          "worked": 10,
+          "date": "2024-11-28",
+          "worked": 4,
           "break": 1,
-          "overtime": 2,
-          "Trabajo": 0.0049119444444444445
+          "overtime": 2
         }
       ],
       "startTime": null,
@@ -67,37 +66,37 @@
       "longitude": -77.03005,
       "schedule": {
         "mon": {
-          "start": "9:00am",
-          "end": "5:00pm",
-          "mode": "Presencial"
+          "start": "09:00 am",
+          "end": "05:00 pm",
+          "mode": "Virtual"
         },
         "tue": {
-          "start": "9:00am",
-          "end": "5:00pm",
+          "start": "09:00 am",
+          "end": "05:00 pm",
           "mode": "Presencial"
         },
         "wed": {
-          "start": "9:00am",
-          "end": "5:00pm",
+          "start": "09:00 am",
+          "end": "05:00 pm",
           "mode": "Virtual"
         },
         "thu": {
-          "start": "9:00am",
-          "end": "5:00pm",
+          "start": "09:00 am",
+          "end": "05:00 pm",
           "mode": "Presencial"
         },
         "fri": {
-          "start": "9:00am",
-          "end": "5:00pm",
+          "start": "09:00 am",
+          "end": "05:00 pm",
           "mode": "Virtual"
         },
         "sat": {
-          "start": "Libre",
+          "start": null,
           "end": "",
           "mode": ""
         },
         "sun": {
-          "start": "Libre",
+          "start": null,
           "end": "",
           "mode": ""
         }
@@ -106,7 +105,7 @@
     {
       "id": 2,
       "name": "Sam Perez",
-      "status": 1,
+      "status": 2,
       "registeredHours": [
         {
           "date": "2024-11-22",
@@ -129,8 +128,8 @@
       "sede": "Casa de Señor Julio",
       "institution": "SENATI",
       "password": "Sam Perez",
-      "latitude": -12.05299,
-      "longitude": -77.03767,
+      "latitude": -12.0651776,
+      "longitude": -77.0506752,
       "schedule": {
         "mon": {
           "start": "10:00am",
@@ -327,6 +326,67 @@
           "mode": ""
         }
       }
+    },
+    {
+      "id": 6,
+      "name": "Giacomo",
+      "email": "giacomo@gmail.com",
+      "phone": "1111111111",
+      "area": 1,
+      "institution": "UPC",
+      "sede": "Casa del Sr. Julio",
+      "password": "Rw*F@NnHWJu4",
+      "startTime": null,
+      "breakStart": 0,
+      "longitude": -77.0506752,
+      "latitude": -12.0651776,
+      "status": 2,
+      "registeredHours": [
+        {
+          "date": "2024-12-10",
+          "worked": 0.01789,
+          "break": 0,
+          "overtime": 0,
+          "Trabajo": 0.003522222222222222
+        }
+      ],
+      "schedule": {
+        "mon": {
+          "start": "03:03",
+          "end": "04:04",
+          "mode": "Virtual"
+        },
+        "tue": {
+          "start": "03:03",
+          "end": "04:04",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "03:03",
+          "end": "04:04",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "03:03",
+          "end": "04:04",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "03:03",
+          "end": "04:04",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "03:03",
+          "end": "04:04",
+          "mode": "Presencial"
+        },
+        "sun": {
+          "start": "22:22",
+          "end": "04:04",
+          "mode": "Virtual"
+        }
+      }
     }
   ],
   "areas": [
@@ -335,39 +395,39 @@
       "name": "Android",
       "schedule": {
         "mon": {
-          "start": "5:00am",
-          "end": "3:00pm",
+          "start": "03:03",
+          "end": "04:04",
           "mode": "Virtual"
         },
         "tue": {
-          "start": "5:00am",
-          "end": "3:00pm",
+          "start": "03:03",
+          "end": "04:04",
           "mode": "Presencial"
         },
         "wed": {
-          "start": "5:00am",
-          "end": "3:00pm",
+          "start": "03:03",
+          "end": "04:04",
           "mode": "Virtual"
         },
         "thu": {
-          "start": "5:00am",
-          "end": "3:00pm",
+          "start": "03:03",
+          "end": "04:04",
           "mode": "Presencial"
         },
         "fri": {
-          "start": "5:00am",
-          "end": "3:00pm",
+          "start": "03:03",
+          "end": "04:04",
           "mode": "Virtual"
         },
         "sat": {
-          "start": "Libre",
-          "end": "",
-          "mode": ""
+          "start": "03:03",
+          "end": "04:04",
+          "mode": "Presencial"
         },
         "sun": {
-          "start": "Libre",
-          "end": "",
-          "mode": ""
+          "start": "22:22",
+          "end": "04:04",
+          "mode": "Virtual"
         }
       }
     },
@@ -534,6 +594,47 @@
           "mode": ""
         }
       }
+    },
+    {
+      "id": 6,
+      "name": "Frontend 2",
+      "schedule": {
+        "mon": {
+          "start": "08:00",
+          "end": "17:00",
+          "mode": "Virtual"
+        },
+        "tue": {
+          "start": "08:00",
+          "end": "17:00",
+          "mode": "Presencial"
+        },
+        "wed": {
+          "start": "08:00",
+          "end": "17:00",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "08:00",
+          "end": "17:00",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "08:00",
+          "end": "17:00",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        },
+        "sun": {
+          "start": "Libre",
+          "end": "",
+          "mode": ""
+        }
+      }
     }
   ],
   "status": [
@@ -599,34 +700,52 @@
   ],
   "messages": [
     {
-      "from": 1,
+      "from": 56002,
       "to": 2,
       "message": "Hola, ¿cómo estás?",
       "timestamp": "2024-11-28T10:00:00Z"
     },
     {
       "from": 2,
-      "to": 1,
+      "to": 56002,
       "message": "¡Todo bien! ¿Y tú?",
       "timestamp": "2024-11-28T10:05:00Z"
     },
     {
-      "from": 3,
+      "from": 56002,
+      "to": 2,
+      "message": "hola",
+      "timestamp": "2024-12-10T15:59:59.352Z"
+    },
+    {
+      "from": 2,
+      "to": "56002",
+      "message": "hola",
+      "timestamp": "2024-12-10T16:01:24.635Z"
+    },
+    {
+      "from": 56002,
+      "to": 6,
+      "message": "hola",
+      "timestamp": "2024-12-10T16:47:07.447Z"
+    },
+    {
+      "from": 6,
+      "to": "56002",
+      "message": "aea",
+      "timestamp": "2024-12-10T16:54:19.499Z"
+    },
+    {
+      "from": 6,
       "to": "56000",
-      "message": "BRIBRIBRI",
-      "timestamp": "2024-12-06T20:43:29.478Z"
+      "message": "ps ps bri",
+      "timestamp": "2024-12-10T16:54:28.635Z"
     },
     {
       "from": 56002,
-      "to": 3,
-      "message": "holiwi",
-      "timestamp": "2024-12-06T20:43:51.985Z"
-    },
-    {
-      "from": 56002,
-      "to": 1,
-      "message": "tgaeogoasgao",
-      "timestamp": "2024-12-06T21:33:41.529Z"
+      "to": 2,
+      "message": "mememem",
+      "timestamp": "2024-12-10T17:45:31.425Z"
     }
   ]
 }

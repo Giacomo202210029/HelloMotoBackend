@@ -694,7 +694,7 @@ router.post("/statuses", (req, res) => {
 });
 
 router.post("/data", (req, res) => {
-    const { name, email, phone, area, sede, institution, password, startTime, breakStart } = req.body;
+    const { name, email, phone, area, sede, institution, password, startTime, breakStart, schedule } = req.body;
 
     // Validar que todos los campos requeridos están presentes
     if (!name || !email || !phone || !area || !institution || !password || !sede) {
@@ -718,7 +718,8 @@ router.post("/data", (req, res) => {
         longitude: 0,
         latitude: 0,
         status: 1, // Estado por defecto (Dentro)
-        registeredHours: [] // Iniciar con horas registradas vacías
+        registeredHours: [], // Iniciar con horas registradas vacías
+        schedule,
     };
 
     // Añadir el nuevo trabajador a la lista de trabajadores
@@ -733,6 +734,7 @@ router.post("/data", (req, res) => {
         worker: newWorker
     });
 });
+
 
 
 
@@ -905,7 +907,7 @@ router.put("/worker/:id/status", (req, res) => {
             if (existingRecord) {
                 existingRecord[type] += hoursWorked;
             } else {
-                worker.registeredHours.push({ date: today, Trabajo: 0, Descanso: 0, Extras: 0, [type]: hoursWorked });
+                worker.registeredHours.push({ date: today, worked: 0, break: 0, overtime: 0, [type]: hoursWorked });
             }
         }
 
@@ -952,6 +954,26 @@ router.get("/area/schedule/:id", (req, res) => {
         res.status(HttpStatusCode.NotFound).json({ message: "Trabajador no encontrado." });
     }
 });
+
+router.post("/area/schedule", (req, res) => {
+    const { id, schedule } = req.body; // Datos recibidos en el cuerpo de la solicitud
+
+    if (!id || !schedule) {
+        return res.status(HttpStatusCode.BadRequest).json({ message: "ID y horario son requeridos." });
+    }
+
+    const existingArea = data.areas.find(area => area.id === parseInt(id));
+
+    if (existingArea) {
+        existingArea.schedule = schedule; // Actualiza el horario si el área ya existe
+        res.status(HttpStatusCode.Ok).json({ message: "Horario actualizado con éxito.", area: existingArea });
+    } else {
+        const newArea = { id: parseInt(id), schedule }; // Crea una nueva área con el ID y horario
+        data.areas.push(newArea);
+        res.status(HttpStatusCode.Created).json({ message: "Área creada con éxito.", area: newArea });
+    }
+});
+
 
 router.get("/area/name", (req, res) => {
     const areaNames = data.areas.map(area => ({ name: area.name, id: area.id }));
@@ -1002,6 +1024,101 @@ router.get("/messages/:from/:to", (req, res) => {
 router.get("/admins", (req, res) => {
     res.status(HttpStatusCode.Ok).send(data.admins);
 });
+
+router.put('/area/schedule/:id', (req, res) => {
+    const areaId = parseInt(req.params.id);
+    const updatedSchedule = req.body.schedule; // El frontend envía el objeto completo del horario
+
+    // Buscar el área por ID
+    const area = data.areas.find((a) => a.id === areaId);
+
+    if (!area) {
+        return res.status(404).json({ error: 'Area not found' });
+    }
+
+    // Validar si el objeto `schedule` es válido
+    if (!updatedSchedule || typeof updatedSchedule !== 'object') {
+        return res.status(400).json({ error: 'Invalid schedule format' });
+    }
+
+    // Reemplazar el objeto completo de schedule
+    area.schedule = updatedSchedule;
+
+    saveData(data)
+
+    return res.status(200).json({
+        message: 'Schedule updated successfully',
+        area,
+    });
+});
+router.post('/areas', (req, res) => {
+    const { name, schedule } = req.body;
+
+    if (!name) {
+        return res.status(400).json({ error: 'Name is required' });
+    }
+
+// Validar si el nombre del área ya existe
+    const existingArea = data.areas.find((a) => a.name === name);
+
+    if (existingArea) {
+        return res.status(409).json({ error: 'Area already exists' });
+    }
+
+    //validar si el horario existe
+    if (schedule && typeof schedule !== 'object') {
+        return res.status(400).json({ error: 'Invalid schedule format' });
+    }
+
+
+
+    const newArea = {
+        id: data.areas.length + 1, // Generar un ID único
+        name,
+        schedule, // Inicialmente vacío
+    };
+
+    data.areas.push(newArea);
+
+    return res.status(201).json({ message: 'Area created successfully', area: newArea });
+});
+
+
+
+
+router.put("/worker/:id/location", (req, res) => {
+    const { id } = req.params;
+    const { latitude, longitude } = req.body;
+
+    // Encontrar al trabajador por ID
+    const worker = data.workers.find(worker => worker.id === parseInt(id));
+    if (!worker) {
+        return res.status(404).json({ message: "Trabajador no encontrado." });
+    }
+
+    // Actualizar latitud y longitud
+    worker.latitude = latitude;
+    worker.longitude = longitude;
+
+    // Guardar los cambios
+    saveData(data); // Método para guardar en la base de datos o archivo
+    res.status(200).json({ message: "Ubicación actualizada correctamente.", worker });
+});
+
+router.get("/admin/:id", (req, res) => {
+    const { id } = req.params;
+    const admin = data.admins.find(admin => admin.id === parseInt(id));
+
+    if (!admin) {
+        return res.status(404).json({ message: "Administrador no encontrado." });
+    }
+
+    res.status(200).json(admin);
+});
+
+
+
+
 
 
 module.exports = {router, onInit};
