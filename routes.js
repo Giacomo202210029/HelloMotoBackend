@@ -261,6 +261,17 @@ router.get("/worker/:id", (req, res) => {
     });
 });
 
+router.get("/worker/:id/status", (req, res) => {
+    const { id } = req.params;
+    const worker = data.workers.find((w) => w.id === parseInt(id));
+
+    if (!worker) {
+        return res.status(404).json({ message: "Trabajador no encontrado" });
+    }
+
+    res.status(200).json({ id: worker.id, status: worker.status });
+});
+
 
 
 router.post('/login', (req, res) => {
@@ -705,7 +716,7 @@ router.post("/data", (req, res) => {
 
     // Crear un nuevo trabajador con un ID único
     const newWorker = {
-        id: ++lastUsedUserId, // Incrementa el ID automáticamente
+        id: ++data.worker.length, // Incrementa el ID automáticamente
         name,
         email,
         phone,
@@ -721,6 +732,7 @@ router.post("/data", (req, res) => {
         registeredHours: [], // Iniciar con horas registradas vacías
         schedule,
     };
+    data.workers=data.workers.filter(worker => worker !== null);
 
     // Añadir el nuevo trabajador a la lista de trabajadores
     data.workers.push(newWorker);
@@ -779,7 +791,7 @@ router.post("/worker/register", (req, res) => {
 
     // Crear un nuevo trabajador con un ID único
     const newWorker = {
-        id: ++lastUsedUserId, // Incrementa automáticamente el ID
+        id: ++data.workers.length, // Incrementa automáticamente el ID
         name,
         email,
         phone,
@@ -791,6 +803,7 @@ router.post("/worker/register", (req, res) => {
         registeredHours: [] // Iniciar con horas registradas vacías
     };
 
+    data.workers= data.workers.filter(worker=> worker !== null);
     // Añadir el nuevo trabajador a la lista de trabajadores
     data.workers.push(newWorker);
 
@@ -895,32 +908,41 @@ router.put("/worker/:id/status", (req, res) => {
     const worker = data.workers.find(worker => worker.id === parseInt(id));
     if (worker) {
         const currentTime = new Date();
-        const today = currentTime.toISOString().slice(0, 10); // Fecha actual (YYYY-MM-DD)
+        const today = currentTime.toISOString().slice(0, 10);
 
-        // Si el trabajador estaba trabajando o descansando, calculamos las horas
-        if (worker.startTime && (status === 2 || status === 3)) {
-            const hoursWorked = (currentTime - new Date(worker.startTime)) / (1000 * 60 * 60);
-            const type = worker.status === 1 ? "Trabajo" : "Descanso";
-
-            // Registrar las horas en registeredHours
+        // Función para registrar horas
+        const registerHours = (type, startTime) => {
+            if (!startTime) return;
+            const hours = (currentTime - new Date(startTime)) / (1000 * 60 * 60);
             const existingRecord = worker.registeredHours.find(r => r.date === today);
             if (existingRecord) {
-                existingRecord[type] += hoursWorked;
+                existingRecord[type] += hours;
             } else {
-                worker.registeredHours.push({ date: today, worked: 0, break: 0, overtime: 0, [type]: hoursWorked });
+                const newRecord = { date: today, worked: 0, break: 0, overtime: 0 };
+                newRecord[type] = hours;
+                worker.registeredHours.push(newRecord);
             }
+        };
+
+        // Registro de horas según estado
+        if (worker.status === 1 && (status === 2|| status===3)) {
+            registerHours("worked", worker.startTime);
+        } else if (worker.status === 3 && (status === 2 || status===1)) {
+            registerHours("break", worker.breakStart);
         }
 
-        // Actualizamos el estado y la hora de inicio si es necesario
+        // Actualización del estado
         worker.status = status;
         worker.startTime = status === 1 ? currentTime : null;
+        worker.breakStart = status === 3 ? currentTime : null;
 
         res.status(200).json({ message: "Estado actualizado correctamente.", worker });
     } else {
         res.status(404).json({ message: "Trabajador no encontrado." });
     }
-    saveData(data)
+    saveData(data);
 });
+
 
 
 router.get("/api/v1/area/id/:name", (req, res) => {
@@ -950,6 +972,16 @@ router.get("/area/schedule/:id", (req, res) => {
     const area = data.areas.find(area => area.id === parseInt(id));
     if (area) {
         res.status(HttpStatusCode.Ok).json({ schedule: area.schedule });
+    } else {
+        res.status(HttpStatusCode.NotFound).json({ message: "Trabajador no encontrado." });
+    }
+});
+
+router.get("/worker/schedule/:id", (req, res) => {
+    const { id } = req.params;
+    const worker = data.workers.find(worker => worker.id === parseInt(id));
+    if (worker) {
+        res.status(HttpStatusCode.Ok).json({ schedule: worker.schedule });
     } else {
         res.status(HttpStatusCode.NotFound).json({ message: "Trabajador no encontrado." });
     }

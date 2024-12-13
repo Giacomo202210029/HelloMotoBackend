@@ -337,17 +337,22 @@
       "sede": "Casa del Sr. Julio",
       "password": "Rw*F@NnHWJu4",
       "startTime": null,
-      "breakStart": 0,
+      "breakStart": null,
       "longitude": -77.0506752,
-      "latitude": -12.0651776,
+      "latitude": -12.0717312,
       "status": 2,
       "registeredHours": [
         {
           "date": "2024-12-10",
           "worked": 0.01789,
           "break": 0,
-          "overtime": 0,
-          "Trabajo": 0.003522222222222222
+          "overtime": 0
+        },
+        {
+          "date": "2024-12-13",
+          "worked": 0.7686427777777777,
+          "break": 0.15362777777777778,
+          "overtime": 0
         }
       ],
       "schedule": {
