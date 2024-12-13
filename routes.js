@@ -913,21 +913,43 @@ router.put("/worker/:id/status", (req, res) => {
         // Función para registrar horas
         const registerHours = (type, startTime) => {
             if (!startTime) return;
-            const hours = (currentTime - new Date(startTime)) / (1000 * 60 * 60);
+
+            const hours = (currentTime - new Date(startTime)) / (1000 * 60 * 60); // Calcula las horas transcurridas
             const existingRecord = worker.registeredHours.find(r => r.date === today);
+
             if (existingRecord) {
-                existingRecord[type] += hours;
+                if (type === "worked") {
+                    const totalWorked = existingRecord.worked + hours;
+
+                    if (totalWorked > 8) {
+                        existingRecord.overtime += totalWorked - 8; // Las horas excedentes van a overtime
+                        existingRecord.worked = 8; // Las horas trabajadas se limitan a 8
+                    } else {
+                        existingRecord.worked += hours;
+                    }
+                } else {
+                    existingRecord[type] += hours;
+                }
             } else {
                 const newRecord = { date: today, worked: 0, break: 0, overtime: 0 };
-                newRecord[type] = hours;
+                if (type === "worked") {
+                    if (hours > 8) {
+                        newRecord.worked = 8;
+                        newRecord.overtime = hours - 8;
+                    } else {
+                        newRecord.worked = hours;
+                    }
+                } else {
+                    newRecord[type] = hours;
+                }
                 worker.registeredHours.push(newRecord);
             }
         };
 
         // Registro de horas según estado
-        if (worker.status === 1 && (status === 2|| status===3)) {
+        if (worker.status === 1 && (status === 2 || status === 3)) {
             registerHours("worked", worker.startTime);
-        } else if (worker.status === 3 && (status === 2 || status===1)) {
+        } else if (worker.status === 3 && (status === 2 || status === 1)) {
             registerHours("break", worker.breakStart);
         }
 
@@ -940,8 +962,10 @@ router.put("/worker/:id/status", (req, res) => {
     } else {
         res.status(404).json({ message: "Trabajador no encontrado." });
     }
+
     saveData(data);
 });
+
 
 
 

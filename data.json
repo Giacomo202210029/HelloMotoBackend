@@ -338,8 +338,8 @@
       "password": "Rw*F@NnHWJu4",
       "startTime": null,
       "breakStart": null,
-      "longitude": -77.0506752,
-      "latitude": -12.0717312,
+      "longitude": -77.0449214,
+      "latitude": -12.0743797,
       "status": 2,
       "registeredHours": [
         {
@@ -350,9 +350,9 @@
         },
         {
           "date": "2024-12-13",
-          "worked": 0.7686427777777777,
-          "break": 0.15362777777777778,
-          "overtime": 0
+          "worked": 8,
+          "break": 0.15523944444444446,
+          "overtime": 0.006519444444444744
         }
       ],
       "schedule": {
@@ -751,6 +751,24 @@
       "to": 2,
       "message": "mememem",
       "timestamp": "2024-12-10T17:45:31.425Z"
+    },
+    {
+      "from": 6,
+      "to": "56000",
+      "message": "hola",
+      "timestamp": "2024-12-13T21:27:52.508Z"
+    },
+    {
+      "from": 6,
+      "to": "56002",
+      "message": "tqerat",
+      "timestamp": "2024-12-13T21:27:57.515Z"
+    },
+    {
+      "from": 56002,
+      "to": 6,
+      "message": "geadga",
+      "timestamp": "2024-12-13T21:29:39.077Z"
     }
   ]
 }
