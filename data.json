@@ -2,102 +2,46 @@
   "workers": [
     {
       "id": 1,
-      "name": "Juan Petersonn",
-      "status": 2,
-      "registeredHours": [
-        {
-          "date": "2024-11-22",
-          "worked": 5,
-          "break": 9,
-          "overtime": 1
-        },
-        {
-          "date": "2024-11-23",
-          "worked": 4,
-          "break": 6,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-23",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-24",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-25",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-26",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-12-15",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-12-18",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-12-17",
-          "worked": 1.0017322222222222,
-          "break": 0.0015730555555555556,
-          "overtime": 0
-        }
-      ],
-      "startTime": null,
-      "breakStart": null,
-      "email": "juan.peterson@example.com",
-      "phone": "987654321",
+      "name": "Giacomo Zoppi Rodriguez",
+      "email": "giacomogazr@gmail.com",
+      "phone": "965471594",
       "area": [
-        1,
-        2
+        6
       ],
-      "sede": "Casa de Señor Julio",
-      "institution": "SENATI",
-      "password": "Juan Peterson",
-      "latitude": -12.075008,
-      "longitude": -77.0473984,
+      "institution": "UPC",
+      "sede": "Casa del Sr. Julio",
+      "password": "MissMuffin",
+      "startTime": 0,
+      "breakStart": 0,
+      "longitude": 0,
+      "latitude": 0,
+      "status": 1,
+      "registeredHours": [],
       "schedule": {
         "mon": {
-          "start": "09:00 am",
-          "end": "05:00 pm",
-          "mode": "Virtual"
+          "start": "",
+          "end": "",
+          "mode": "Libre"
         },
         "tue": {
-          "start": "09:00 am",
-          "end": "05:00 pm",
+          "start": "09:00",
+          "end": "17:00",
           "mode": "Presencial"
         },
         "wed": {
-          "start": "09:00 am",
-          "end": "05:00 pm",
-          "mode": "Virtual"
+          "start": "",
+          "end": "",
+          "mode": "Libre"
         },
         "thu": {
-          "start": "09:00 am",
-          "end": "05:00 pm",
-          "mode": "Presencial"
+          "start": "",
+          "end": "",
+          "mode": "Libre"
         },
         "fri": {
-          "start": "09:00 am",
-          "end": "05:00 pm",
-          "mode": "Virtual"
+          "start": "09:00",
+          "end": "17:00",
+          "mode": "Presencial"
         },
         "sat": {
           "start": "",
@@ -113,378 +57,46 @@
     },
     {
       "id": 2,
-      "name": "Sam Perez",
-      "status": 2,
-      "registeredHours": [
-        {
-          "date": "2024-11-22",
-          "worked": 5,
-          "break": 2,
-          "overtime": 1
-        },
-        {
-          "date": "2024-11-23",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        }
-      ],
-      "startTime": null,
-      "breakStart": null,
-      "email": "sam.perez@example.com",
-      "phone": "912345678",
+      "name": "Benjamin Fernando Apaza Alvarez",
+      "email": "apazabenjamin39@gmail.com",
+      "phone": "941560117",
       "area": [
-        2
+        6
       ],
-      "sede": "Casa de Señor Julio",
       "institution": "SENATI",
-      "password": "Sam Perez",
-      "latitude": -12.0651776,
-      "longitude": -77.0506752,
-      "schedule": {
-        "mon": {
-          "start": "10:00am",
-          "end": "6:00pm",
-          "mode": "Presencial"
-        },
-        "tue": {
-          "start": "10:00am",
-          "end": "6:00pm",
-          "mode": "Virtual"
-        },
-        "wed": {
-          "start": "10:00am",
-          "end": "6:00pm",
-          "mode": "Presencial"
-        },
-        "thu": {
-          "start": "10:00am",
-          "end": "6:00pm",
-          "mode": "Virtual"
-        },
-        "fri": {
-          "start": "10:00am",
-          "end": "6:00pm",
-          "mode": "Presencial"
-        },
-        "sat": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        },
-        "sun": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        }
-      }
-    },
-    {
-      "id": 3,
-      "name": "Celeste Jr",
+      "sede": "Casa del Sr. Julio",
+      "password": "6MYk418$tRyZ",
+      "startTime": 0,
+      "breakStart": 0,
+      "longitude": 0,
+      "latitude": 0,
       "status": 1,
-      "registeredHours": [
-        {
-          "date": "2024-11-22",
-          "worked": 5,
-          "break": 9,
-          "overtime": 1
-        },
-        {
-          "date": "2024-11-23",
-          "worked": 4,
-          "break": 6,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-23",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-24",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-25",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-26",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-27",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-28",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        }
-      ],
-      "startTime": null,
-      "breakStart": null,
-      "email": "celeste.jr@example.com",
-      "phone": "989898989",
-      "area": [
-        3,
-        4
-      ],
-      "sede": "Casa de Señor Julio",
-      "institution": "SENATI",
-      "password": "Celeste Jr",
-      "latitude": -12.04636,
-      "longitude": -77.04279,
+      "registeredHours": [],
       "schedule": {
         "mon": {
-          "start": "8:00am",
-          "end": "4:00pm",
-          "mode": "Presencial"
-        },
-        "tue": {
-          "start": "8:00am",
-          "end": "4:00pm",
-          "mode": "Virtual"
-        },
-        "wed": {
-          "start": "8:00am",
-          "end": "4:00pm",
-          "mode": "Presencial"
-        },
-        "thu": {
-          "start": "8:00am",
-          "end": "4:00pm",
-          "mode": "Virtual"
-        },
-        "fri": {
-          "start": "8:00am",
-          "end": "4:00pm",
-          "mode": "Presencial"
-        },
-        "sat": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        },
-        "sun": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        }
-      }
-    },
-    {
-      "id": 4,
-      "name": "Sammy el Heladero",
-      "status": 1,
-      "registeredHours": [
-        {
-          "date": "2024-11-22",
-          "worked": 5,
-          "break": 9,
-          "overtime": 1
-        },
-        {
-          "date": "2024-11-23",
-          "worked": 4,
-          "break": 6,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-23",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-24",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-25",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-26",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-27",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-28",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        }
-      ],
-      "startTime": null,
-      "breakStart": null,
-      "email": "sammy.heladero@example.com",
-      "phone": "977777777",
-      "area": [
-        5
-      ],
-      "sede": "Miraflores",
-      "institution": "SENATI",
-      "password": "Sammy el Heladero",
-      "latitude": -12.04318,
-      "longitude": -77.02824,
-      "schedule": {
-        "mon": {
-          "start": "9:00am",
-          "end": "5:00pm",
-          "mode": "Presencial"
-        },
-        "tue": {
-          "start": "9:00am",
-          "end": "5:00pm",
-          "mode": "Presencial"
-        },
-        "wed": {
-          "start": "9:00am",
-          "end": "5:00pm",
-          "mode": "Presencial"
-        },
-        "thu": {
-          "start": "9:00am",
-          "end": "5:00pm",
-          "mode": "Presencial"
-        },
-        "fri": {
-          "start": "9:00am",
-          "end": "5:00pm",
-          "mode": "Presencial"
-        },
-        "sat": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        },
-        "sun": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        }
-      }
-    },
-    {
-      "id": 5,
-      "name": "Peter Parker",
-      "status": 2,
-      "registeredHours": [
-        {
-          "date": "2024-11-22",
-          "worked": 5,
-          "break": 9,
-          "overtime": 1
-        },
-        {
-          "date": "2024-11-23",
-          "worked": 4,
-          "break": 6,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-23",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-24",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-25",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-26",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-27",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-11-28",
-          "worked": 4,
-          "break": 1,
-          "overtime": 2
-        },
-        {
-          "date": "2024-12-17",
-          "worked": 0.04716361111111111,
-          "break": 0.12523444444444445,
-          "overtime": 0
-        }
-      ],
-      "startTime": null,
-      "breakStart": null,
-      "email": "peter.parker@example.com",
-      "phone": "911111111",
-      "area": [
-        4
-      ],
-      "sede": "Casa de Señor Julio",
-      "institution": "SENATI",
-      "password": "Peter Parker",
-      "latitude": -12.075008,
-      "longitude": -77.0473984,
-      "schedule": {
-        "mon": {
-          "start": "7:00am",
-          "end": "3:00pm",
+          "start": "09:00",
+          "end": "17:00",
           "mode": "Virtual"
         },
         "tue": {
-          "start": "7:00am",
-          "end": "3:00pm",
+          "start": "09:00",
+          "end": "12:30",
           "mode": "Presencial"
         },
         "wed": {
-          "start": "7:00am",
-          "end": "3:00pm",
+          "start": "09:00",
+          "end": "17:00",
           "mode": "Virtual"
         },
         "thu": {
-          "start": "7:00am",
-          "end": "3:00pm",
-          "mode": "Presencial"
+          "start": "09:00",
+          "end": "17:00",
+          "mode": "Virtual"
         },
         "fri": {
-          "start": "7:00am",
-          "end": "3:00pm",
-          "mode": "Virtual"
+          "start": "09:00",
+          "end": "12:30",
+          "mode": "Presencial"
         },
         "sat": {
           "start": "",
@@ -710,29 +322,29 @@
       "name": "Frontend 2",
       "schedule": {
         "mon": {
-          "start": "08:00",
+          "start": "09:00",
           "end": "17:00",
           "mode": "Virtual"
         },
         "tue": {
-          "start": "08:00",
-          "end": "17:00",
+          "start": "09:00",
+          "end": "12:30",
           "mode": "Presencial"
         },
         "wed": {
-          "start": "08:00",
+          "start": "09:00",
           "end": "17:00",
           "mode": "Virtual"
         },
         "thu": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Presencial"
-        },
-        "fri": {
-          "start": "08:00",
+          "start": "09:00",
           "end": "17:00",
           "mode": "Virtual"
+        },
+        "fri": {
+          "start": "09:00",
+          "end": "12:30",
+          "mode": "Presencial"
         },
         "sat": {
           "start": "",
@@ -808,126 +420,5 @@
       "statusTime": "09:00:00"
     }
   ],
-  "messages": [
-    {
-      "from": 56002,
-      "to": 2,
-      "message": "Hola, ¿cómo estás?",
-      "timestamp": "2024-11-28T10:00:00Z"
-    },
-    {
-      "from": 2,
-      "to": 56002,
-      "message": "¡Todo bien! ¿Y tú?",
-      "timestamp": "2024-11-28T10:05:00Z"
-    },
-    {
-      "from": 56002,
-      "to": 2,
-      "message": "hola",
-      "timestamp": "2024-12-10T15:59:59.352Z"
-    },
-    {
-      "from": 2,
-      "to": "56002",
-      "message": "hola",
-      "timestamp": "2024-12-10T16:01:24.635Z"
-    },
-    {
-      "from": 56002,
-      "to": 6,
-      "message": "hola",
-      "timestamp": "2024-12-10T16:47:07.447Z"
-    },
-    {
-      "from": 6,
-      "to": "56002",
-      "message": "aea",
-      "timestamp": "2024-12-10T16:54:19.499Z"
-    },
-    {
-      "from": 6,
-      "to": "56000",
-      "message": "ps ps bri",
-      "timestamp": "2024-12-10T16:54:28.635Z"
-    },
-    {
-      "from": 56002,
-      "to": 2,
-      "message": "mememem",
-      "timestamp": "2024-12-10T17:45:31.425Z"
-    },
-    {
-      "from": 6,
-      "to": "56000",
-      "message": "hola",
-      "timestamp": "2024-12-13T21:27:52.508Z"
-    },
-    {
-      "from": 6,
-      "to": "56002",
-      "message": "tqerat",
-      "timestamp": "2024-12-13T21:27:57.515Z"
-    },
-    {
-      "from": 56002,
-      "to": 6,
-      "message": "geadga",
-      "timestamp": "2024-12-13T21:29:39.077Z"
-    },
-    {
-      "from": 1,
-      "to": "56002",
-      "message": "hola",
-      "timestamp": "2024-12-17T14:50:40.834Z"
-    },
-    {
-      "from": 56002,
-      "to": 1,
-      "message": "hola?",
-      "timestamp": "2024-12-17T17:06:10.978Z"
-    },
-    {
-      "from": 1,
-      "to": "56002",
-      "message": "si, soy yo, que pasó?",
-      "timestamp": "2024-12-17T17:06:27.551Z"
-    },
-    {
-      "from": 1,
-      "to": "56002",
-      "message": "ah no nomas que",
-      "timestamp": "2024-12-17T17:22:36.611Z"
-    },
-    {
-      "from": 1,
-      "to": "56002",
-      "message": "tengas un buen dia",
-      "timestamp": "2024-12-17T17:22:48.633Z"
-    },
-    {
-      "from": 1,
-      "to": "56000",
-      "message": "hola",
-      "timestamp": "2024-12-17T17:25:41.612Z"
-    },
-    {
-      "from": 1,
-      "to": "56002",
-      "message": "jaja",
-      "timestamp": "2024-12-17T17:25:45.070Z"
-    },
-    {
-      "from": 56001,
-      "to": 1,
-      "message": "hola",
-      "timestamp": "2024-12-20T15:17:59.578Z"
-    },
-    {
-      "from": 1,
-      "to": "56001",
-      "message": "jwjeje",
-      "timestamp": "2024-12-20T15:18:23.390Z"
-    }
-  ]
+  "messages": []
 }
