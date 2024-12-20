@@ -497,126 +497,6 @@
           "mode": "Libre"
         }
       }
-    },
-    {
-      "id": 6,
-      "name": "Giacomo Zoppi",
-      "email": "giacomo@gmail.com",
-      "phone": "965471594",
-      "area": [
-        1,
-        7
-      ],
-      "institution": "UPC",
-      "sede": "Casa del Sr. Julio",
-      "password": "JUAd-qn+p@iA",
-      "startTime": null,
-      "breakStart": null,
-
-      "longitude": -77.0473984,
-      "latitude": -12.075008,
-      "status": 2,
-      "registeredHours": [
-        {
-          "date": "2024-12-17",
-          "worked": 0.013555000000000001,
-          "break": 0,
-          "overtime": 0
-        }
-      ],
-      "schedule": {
-        "mon": {
-          "start": "09:03 am",
-          "end": "04:04 am",
-          "mode": "Virtual"
-        },
-        "tue": {
-          "start": "03:03 am",
-          "end": "04:04 am",
-          "mode": "Presencial"
-        },
-        "wed": {
-          "start": "03:03 am",
-          "end": "04:04 am",
-          "mode": "Virtual"
-        },
-        "thu": {
-          "start": "03:03 am",
-          "end": "04:04 am",
-          "mode": "Presencial"
-        },
-        "fri": {
-          "start": "03:03 am",
-          "end": "04:04 am",
-          "mode": "Virtual"
-        },
-        "sat": {
-          "start": "03:03 am",
-          "end": "04:04 am",
-          "mode": "Presencial"
-        },
-        "sun": {
-          "start": "10:22 pm",
-          "end": "04:04 am",
-          "mode": "Virtual"
-        }
-      }
-    },
-    {
-      "id": 7,
-      "name": "Limon",
-      "email": "Limon@gmail.com",
-      "phone": "992010542",
-      "area": [
-        7,
-        3
-      ],
-      "institution": "SENATI",
-      "sede": "Casa del Sr. Julio",
-      "password": "(dUI?0NxPv?>",
-      "startTime": 0,
-      "breakStart": 0,
-      "longitude": 0,
-      "latitude": 0,
-      "status": 1,
-      "registeredHours": [],
-      "schedule": {
-        "mon": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Virtual"
-        },
-        "tue": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Presencial"
-        },
-        "wed": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Virtual"
-        },
-        "thu": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Presencial"
-        },
-        "fri": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Virtual"
-        },
-        "sat": {
-          "start": "Libre",
-          "end": "",
-          "mode": ""
-        },
-        "sun": {
-          "start": "Libre",
-          "end": "",
-          "mode": ""
-        }
-      }
     }
   ],
   "areas": [
@@ -666,28 +546,28 @@
       "name": "Ventas",
       "schedule": {
         "mon": {
-          "start": "6:00am",
-          "end": "3:00pm",
+          "start": "06:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "tue": {
-          "start": "6:00am",
-          "end": "3:00pm",
+          "start": "06:00",
+          "end": "15:00",
           "mode": "Presencial"
         },
         "wed": {
-          "start": "6:00am",
-          "end": "3:00pm",
+          "start": "06:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "thu": {
-          "start": "6:00am",
-          "end": "3:00pm",
+          "start": "06:00",
+          "end": "15:00",
           "mode": "Presencial"
         },
         "fri": {
-          "start": "6:00am",
-          "end": "3:00pm",
+          "start": "06:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "sat": {
@@ -707,28 +587,28 @@
       "name": "Marketing",
       "schedule": {
         "mon": {
-          "start": "7:00am",
-          "end": "3:00pm",
+          "start": "07:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "tue": {
-          "start": "7:00am",
-          "end": "3:00pm",
+          "start": "07:00",
+          "end": "15:00",
           "mode": "Presencial"
         },
         "wed": {
-          "start": "7:00am",
-          "end": "3:00pm",
+          "start": "07:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "thu": {
-          "start": "7:00am",
-          "end": "3:00pm",
+          "start": "07:00",
+          "end": "15:00",
           "mode": "Presencial"
         },
         "fri": {
-          "start": "7:00am",
-          "end": "3:00pm",
+          "start": "07:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "sat": {
@@ -748,28 +628,28 @@
       "name": "Soporte Tecnico",
       "schedule": {
         "mon": {
-          "start": "9:00am",
-          "end": "3:00pm",
+          "start": "09:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "tue": {
-          "start": "9:00am",
-          "end": "3:00pm",
+          "start": "09:00",
+          "end": "15:00",
           "mode": "Presencial"
         },
         "wed": {
-          "start": "9:00am",
-          "end": "3:00pm",
+          "start": "09:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "thu": {
-          "start": "9:00am",
-          "end": "3:00pm",
+          "start": "09:00",
+          "end": "15:00",
           "mode": "Presencial"
         },
         "fri": {
-          "start": "9:00am",
-          "end": "3:00pm",
+          "start": "09:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "sat": {
@@ -786,31 +666,31 @@
     },
     {
       "id": 5,
-      "name": "Analisis",
+      "name": "Analisis I",
       "schedule": {
         "mon": {
-          "start": "10:00am",
-          "end": "3:00pm",
+          "start": "10:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "tue": {
-          "start": "10:00am",
-          "end": "3:00pm",
+          "start": "10:00",
+          "end": "15:00",
           "mode": "Presencial"
         },
         "wed": {
-          "start": "10:00am",
-          "end": "3:00pm",
+          "start": "10:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "thu": {
-          "start": "10:00am",
-          "end": "3:00pm",
+          "start": "10:00",
+          "end": "15:00",
           "mode": "Presencial"
         },
         "fri": {
-          "start": "10:00am",
-          "end": "3:00pm",
+          "start": "10:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "sat": {
@@ -863,47 +743,6 @@
           "start": "",
           "end": "",
           "mode": "Libre"
-        }
-      }
-    },
-    {
-      "id": 7,
-      "name": "Minecraft",
-      "schedule": {
-        "mon": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Virtual"
-        },
-        "tue": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Presencial"
-        },
-        "wed": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Virtual"
-        },
-        "thu": {
-          "start": "08:00",
-          "end": "17:00",
-          "mode": "Presencial"
-        },
-        "fri": {
-          "start": "08:09",
-          "end": "17:00",
-          "mode": "Virtual"
-        },
-        "sat": {
-          "start": "Libre",
-          "end": "",
-          "mode": ""
-        },
-        "sun": {
-          "start": "Libre",
-          "end": "",
-          "mode": ""
         }
       }
     }
@@ -1077,6 +916,18 @@
       "to": "56002",
       "message": "jaja",
       "timestamp": "2024-12-17T17:25:45.070Z"
+    },
+    {
+      "from": 56001,
+      "to": 1,
+      "message": "hola",
+      "timestamp": "2024-12-20T15:17:59.578Z"
+    },
+    {
+      "from": 1,
+      "to": "56001",
+      "message": "jwjeje",
+      "timestamp": "2024-12-20T15:18:23.390Z"
     }
   ]
 }
