@@ -714,9 +714,22 @@ router.post("/data", (req, res) => {
         });
     }
 
-    // Crear un nuevo trabajador con un ID único
+    // Asegurarse de que data.workers sea un arreglo válido
+    if (!Array.isArray(data.workers)) {
+        data.workers = [];
+    }
+
+    // Filtrar trabajadores nulos
+    data.workers = data.workers.filter(worker => worker !== null);
+
+    // Calcular el siguiente ID
+    const nextId = data.workers.length > 0
+        ? Math.max(...data.workers.map(worker => worker.id)) + 1
+        : 1;
+
+    // Crear el nuevo trabajador
     const newWorker = {
-        id: ++data.worker.length, // Incrementa el ID automáticamente
+        id: nextId, // ID generado
         name,
         email,
         phone,
@@ -724,28 +737,28 @@ router.post("/data", (req, res) => {
         institution,
         sede,
         password,
-        startTime: startTime || 0,  // Si no se pasa, se usa 0 por defecto
-        breakStart: breakStart || 0, // Lo mismo para breakStart
+        startTime: startTime || 0,
+        breakStart: breakStart || 0,
         longitude: 0,
         latitude: 0,
-        status: 1, // Estado por defecto (Dentro)
-        registeredHours: [], // Iniciar con horas registradas vacías
+        status: 1,
+        registeredHours: [],
         schedule,
     };
-    data.workers=data.workers.filter(worker => worker !== null);
 
-    // Añadir el nuevo trabajador a la lista de trabajadores
+    // Agregar el nuevo trabajador al arreglo
     data.workers.push(newWorker);
 
-    // Guardar los datos actualizados en el archivo
-    saveData(data); // Asegúrate de guardar los cambios en el archivo
+    // Guardar los datos
+    saveData(data);
 
-    // Enviar una respuesta de éxito
+    // Respuesta de éxito
     res.status(201).json({
         message: "Trabajador añadido correctamente",
         worker: newWorker
     });
 });
+
 
 
 
