@@ -922,13 +922,17 @@ router.put("/worker/:id/status", (req, res) => {
     if (worker) {
         const currentTime = new Date();
         const today = currentTime.toISOString().slice(0, 10);
+        const yesterday = new Date();
+
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterdayFormatted = yesterday.toISOString().slice(0, 10);
 
         // Función para registrar horas
         const registerHours = (type, startTime) => {
             if (!startTime) return;
 
             const hours = (currentTime - new Date(startTime)) / (1000 * 60 * 60); // Calcula las horas transcurridas
-            const existingRecord = worker.registeredHours.find(r => r.date === today);
+            const existingRecord = worker.registeredHours.find(r => r.date === yesterdayFormatted);
 
             if (existingRecord) {
                 if (type === "worked") {
@@ -944,7 +948,7 @@ router.put("/worker/:id/status", (req, res) => {
                     existingRecord[type] += hours;
                 }
             } else {
-                const newRecord = { date: today, worked: 0, break: 0, overtime: 0 };
+                const newRecord = { date: yesterdayFormatted, worked: 0, break: 0, overtime: 0 };
                 if (type === "worked") {
                     if (hours > 8) {
                         newRecord.worked = 8;
@@ -1080,11 +1084,11 @@ router.get("/messages/:from/:to", (req, res) => {
 
     const chatMessages = data.messages.filter(
         (msg) =>
-            (msg.from.toString() === from && msg.to.toString() === to) ||
-            (msg.from.toString() === to && msg.to.toString() === from)
+            (msg.from.toString() === from || msg.from.toString() === to) &&
+            (msg.to.toString() === from || msg.to.toString() === to)
     );
 
-    console.log(`Historial encontrado (${from} ↔ ${to}):`, chatMessages);
+    console.log(`Historial encontrado (${from} ↔ ${to}):`);
     res.json(chatMessages);
 });
 
@@ -1185,7 +1189,22 @@ router.get("/admin/:id", (req, res) => {
     res.status(200).json(admin);
 });
 
+router.delete('/worker/:id', (req, res) => {
+    const { id } = req.params;
+    const workerIndex = data.workers.findIndex(worker => worker.id === parseInt(id));
 
+    if (workerIndex === -1) {
+        return res.status(404).json({ message: 'Worker not found.' });
+    }
+
+    // Remove the worker from the array
+    data.workers.splice(workerIndex, 1);
+
+    // Save the updated data
+    saveData(data);
+
+    res.status(200).json({ message: 'Worker deleted successfully.' });
+});
 
 
 
