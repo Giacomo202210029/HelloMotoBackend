@@ -13,6 +13,17 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+    windowMs: 10 * 60 * 1000, // 15 minutos
+    max: 20, // Máximo 100 solicitudes por IP cada 15 min
+    message: "Demasiadas solicitudes, intenta más tarde.",
+});
+
+app.use(limiter);
+
+
 // Swagger setup
 const swaggerOptions = {
     swaggerDefinition: {
