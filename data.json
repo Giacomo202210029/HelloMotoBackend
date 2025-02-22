@@ -4,19 +4,140 @@
       "id": 1,
       "name": "Giacomo Zoppi Rodriguez",
       "email": "giacomogazr@gmail.com",
-      "phone": "965471594",
+      "phone": "666",
       "area": [
         6
       ],
-      "institution": "UPC",
-      "sede": "Casa del Sr. Julio",
-      "password": "MissMuffin",
-      "startTime": 0,
-      "breakStart": 0,
-      "longitude": 0,
-      "latitude": 0,
-      "status": 1,
-      "registeredHours": [],
+      "institution": "demo",
+      "sede": "9",
+      "password": "contraseñasupersecreta",
+      "startTime": null,
+      "breakStart": "2025-02-13T00:47:43.463Z",
+      "longitude": -77.0441216,
+      "latitude": -12.0717312,
+      "status": 3,
+      "registeredHours": [
+        {
+          "date": "2025-02-10",
+          "worked": 8,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2025-02-11",
+          "worked": 7.5,
+          "break": 1,
+          "overtime": 1.5
+        },
+        {
+          "date": "2025-02-12",
+          "worked": 8,
+          "break": 1,
+          "overtime": 0
+        },
+        {
+          "date": "2025-02-13",
+          "worked": 8,
+          "break": 1,
+          "overtime": 1
+        },
+        {
+          "date": "2025-02-14",
+          "worked": 7,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2025-02-15",
+          "worked": 6,
+          "break": 1,
+          "overtime": 3
+        },
+        {
+          "date": "2025-02-16",
+          "worked": 8,
+          "break": 1,
+          "overtime": 1
+        },
+        {
+          "date": "2025-02-17",
+          "worked": 8,
+          "break": 1,
+          "overtime": 0
+        },
+        {
+          "date": "2025-02-18",
+          "worked": 7.5,
+          "break": 1,
+          "overtime": 1.5
+        },
+        {
+          "date": "2025-02-19",
+          "worked": 8,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2025-02-20",
+          "worked": 8,
+          "break": 1,
+          "overtime": 1
+        },
+        {
+          "date": "2025-02-21",
+          "worked": 7,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2025-02-22",
+          "worked": 6,
+          "break": 1,
+          "overtime": 3
+        },
+        {
+          "date": "2025-02-23",
+          "worked": 8,
+          "break": 1,
+          "overtime": 1
+        },
+        {
+          "date": "2025-02-24",
+          "worked": 8,
+          "break": 1,
+          "overtime": 0
+        },
+        {
+          "date": "2025-02-25",
+          "worked": 7.5,
+          "break": 1,
+          "overtime": 1.5
+        },
+        {
+          "date": "2025-02-26",
+          "worked": 8,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2025-02-27",
+          "worked": 8,
+          "break": 1,
+          "overtime": 1
+        },
+        {
+          "date": "2025-02-28",
+          "worked": 7,
+          "break": 1,
+          "overtime": 2
+        },
+        {
+          "date": "2025-03-01",
+          "worked": 6,
+          "break": 1,
+          "overtime": 3
+        }
+      ],
       "schedule": {
         "mon": {
           "start": "",
@@ -57,15 +178,15 @@
     },
     {
       "id": 2,
-      "name": "Benjamin Fernando Apaza Alvarez",
-      "email": "apazabenjamin39@gmail.com",
-      "phone": "941560117",
+      "name": "Luffy",
+      "email": "onepiece@gmail.com",
+      "phone": "333333333",
       "area": [
-        6
+        4
       ],
-      "institution": "SENATI",
-      "sede": "Casa del Sr. Julio",
-      "password": "6MYk418$tRyZ",
+      "institution": "Mugiwara No School",
+      "sede": "East Blue",
+      "password": "N8aXGM@H>Azc",
       "startTime": 0,
       "breakStart": 0,
       "longitude": 0,
@@ -75,28 +196,83 @@
       "schedule": {
         "mon": {
           "start": "09:00",
-          "end": "17:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "tue": {
           "start": "09:00",
-          "end": "12:30",
+          "end": "15:00",
           "mode": "Presencial"
         },
         "wed": {
           "start": "09:00",
-          "end": "17:00",
+          "end": "15:00",
           "mode": "Virtual"
         },
         "thu": {
           "start": "09:00",
-          "end": "17:00",
-          "mode": "Virtual"
+          "end": "15:00",
+          "mode": "Presencial"
         },
         "fri": {
           "start": "09:00",
-          "end": "12:30",
+          "end": "15:00",
+          "mode": "Virtual"
+        },
+        "sat": {
+          "start": "",
+          "end": "",
+          "mode": "Libre"
+        },
+        "sun": {
+          "start": "",
+          "end": "",
+          "mode": "Libre"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "De'Mo",
+      "email": "demo@gmail.com",
+      "phone": "111111111",
+      "area": [
+        3
+      ],
+      "institution": "Universidad del Norte",
+      "sede": "Miraflores",
+      "password": "FJb4NFZtxXGN",
+      "startTime": 0,
+      "breakStart": 0,
+      "longitude": 0,
+      "latitude": 0,
+      "status": 1,
+      "registeredHours": [],
+      "schedule": {
+        "mon": {
+          "start": "07:00",
+          "end": "15:00",
+          "mode": "Virtual"
+        },
+        "tue": {
+          "start": "07:00",
+          "end": "15:00",
           "mode": "Presencial"
+        },
+        "wed": {
+          "start": "07:00",
+          "end": "15:00",
+          "mode": "Virtual"
+        },
+        "thu": {
+          "start": "07:00",
+          "end": "15:00",
+          "mode": "Presencial"
+        },
+        "fri": {
+          "start": "07:00",
+          "end": "15:00",
+          "mode": "Virtual"
         },
         "sat": {
           "start": "",
@@ -112,47 +288,6 @@
     }
   ],
   "areas": [
-    {
-      "id": 1,
-      "name": "Android",
-      "schedule": {
-        "mon": {
-          "start": "03:03",
-          "end": "04:04",
-          "mode": "Virtual"
-        },
-        "tue": {
-          "start": "03:03",
-          "end": "04:04",
-          "mode": "Presencial"
-        },
-        "wed": {
-          "start": "03:03",
-          "end": "04:04",
-          "mode": "Virtual"
-        },
-        "thu": {
-          "start": "03:03",
-          "end": "04:04",
-          "mode": "Presencial"
-        },
-        "fri": {
-          "start": "03:03",
-          "end": "04:04",
-          "mode": "Virtual"
-        },
-        "sat": {
-          "start": "03:03",
-          "end": "04:04",
-          "mode": "Presencial"
-        },
-        "sun": {
-          "start": "22:22",
-          "end": "04:04",
-          "mode": "Virtual"
-        }
-      }
-    },
     {
       "id": 2,
       "name": "Ventas",
@@ -275,88 +410,6 @@
           "mode": "Libre"
         }
       }
-    },
-    {
-      "id": 5,
-      "name": "Analisis I",
-      "schedule": {
-        "mon": {
-          "start": "10:00",
-          "end": "15:00",
-          "mode": "Virtual"
-        },
-        "tue": {
-          "start": "10:00",
-          "end": "15:00",
-          "mode": "Presencial"
-        },
-        "wed": {
-          "start": "10:00",
-          "end": "15:00",
-          "mode": "Virtual"
-        },
-        "thu": {
-          "start": "10:00",
-          "end": "15:00",
-          "mode": "Presencial"
-        },
-        "fri": {
-          "start": "10:00",
-          "end": "15:00",
-          "mode": "Virtual"
-        },
-        "sat": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        },
-        "sun": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        }
-      }
-    },
-    {
-      "id": 6,
-      "name": "Frontend 2",
-      "schedule": {
-        "mon": {
-          "start": "09:00",
-          "end": "17:00",
-          "mode": "Virtual"
-        },
-        "tue": {
-          "start": "09:00",
-          "end": "12:30",
-          "mode": "Presencial"
-        },
-        "wed": {
-          "start": "09:00",
-          "end": "17:00",
-          "mode": "Virtual"
-        },
-        "thu": {
-          "start": "09:00",
-          "end": "17:00",
-          "mode": "Virtual"
-        },
-        "fri": {
-          "start": "09:00",
-          "end": "12:30",
-          "mode": "Presencial"
-        },
-        "sat": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        },
-        "sun": {
-          "start": "",
-          "end": "",
-          "mode": "Libre"
-        }
-      }
     }
   ],
   "status": [
@@ -378,47 +431,19 @@
   ],
   "admins": [
     {
-      "id": 56000,
-      "name": "Bri",
-      "area": "Administración",
-      "password": "Bri"
-    },
-    {
-      "id": 56001,
-      "name": "Señor Julio",
-      "area": "Boss",
-      "password": "Señor Julio"
-    },
-    {
       "id": 56002,
-      "name": "a",
+      "name": "demo",
       "area": "Administración",
-      "password": "a"
+      "password": "demo"
     }
   ],
-  "statusChanges": [
+  "statusChanges": [],
+  "messages": [
     {
-      "id": 1,
-      "date": "2023-10-29",
-      "start": "08:00:00",
-      "end": "17:00:00",
-      "workerId": 1,
-      "statusId": 1,
-      "longitude": -76.991,
-      "latitude": -12.046,
-      "statusTime": "08:00:00"
-    },
-    {
-      "id": 2,
-      "date": "2023-10-29",
-      "start": "09:00:00",
-      "end": "18:00:00",
-      "workerId": 2,
-      "statusId": 2,
-      "longitude": -76.991,
-      "latitude": -12.046,
-      "statusTime": "09:00:00"
+      "from": 56002,
+      "to": 1,
+      "message": "Buenos dias",
+      "timestamp": "2025-02-13T00:45:26.583Z"
     }
-  ],
-  "messages": []
+  ]
 }
